@@ -1,0 +1,15 @@
+- clean: ['~']
+
+- link:
+    ~/.bash_profile:
+        path: bash_profile
+        create: false
+        relink: false
+        force: false
+    ~/.bashrc:
+        path: bashrc
+        create: false
+        relink: false
+        force: false
+
+
