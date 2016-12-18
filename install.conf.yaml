@@ -6,12 +6,20 @@
 - clean: ['~']
 
 - link:
+    # Bash
     ~/.bash_profile:
-        path: bash_profile
-        force: false
+        path: bash/bash_profile
     ~/.bashrc:
-        path: bashrc
-        force: false
+        path: bash/bashrc
+    ~/.bash_prompt:
+        path: bash/bash_prompt
+
+    # Git
+    ~/.gitconfig:
+        path: git/gitconfig
+    ~/.gitignore:
+        path: git/gitignore
 
 - shell:
+    # Keep the submodule up to date
     - [git submodule update --init --recursive, Installing submodules]
