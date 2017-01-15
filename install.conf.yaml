@@ -13,6 +13,8 @@
         path: bash/bashrc
     ~/.bash_prompt:
         path: bash/bash_prompt
+    ~/.dir_colors:
+        path: bash/dir_colors
 
     # Git
     ~/.gitconfig:

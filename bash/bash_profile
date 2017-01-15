@@ -1,7 +1,17 @@
 #!/bin/bash
 
+# macOS sources .bash_profile for every new window/tab, so it's preferrable over .bashrc.
+
 # For GNU coreutils and man pages.
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 
 if [ -f ~/.bash_prompt ]; then . ~/.bash_prompt; fi
+
+# Aliases.
+eval "$(thefuck --alias)"
+alias ls="ls --color=always"
+alias grep="grep --color=always"
+
+# Directory colors.
+eval `dircolors ~/.dir_colors`
