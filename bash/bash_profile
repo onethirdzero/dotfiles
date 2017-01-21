@@ -1,6 +1,7 @@
 #!/bin/bash
 
-# macOS sources .bash_profile for every new window/tab, so it's preferrable over .bashrc.
+# macOS sources .bash_profile for every new window/tab,
+# so it's preferrable over .bashrc.
 
 # For GNU coreutils and man pages.
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
@@ -12,6 +13,7 @@ if [ -f ~/.bash_prompt ]; then . ~/.bash_prompt; fi
 eval "$(thefuck --alias)"
 alias ls="ls --color=always"
 alias grep="grep --color=always"
+alias vim="/usr/local/bin/vim" # Mac's built-in Vim doesn't have clipboard support.
 
 # Directory colors.
 eval `dircolors ~/.dir_colors`
