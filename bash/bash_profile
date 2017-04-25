@@ -17,3 +17,9 @@ alias vim="/usr/local/bin/vim" # Mac's built-in Vim doesn't have clipboard suppo
 
 # Directory colors.
 eval `dircolors ~/.dir_colors`
+
+# For bash autocompletion.
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+    . $(brew --prefix)/etc/bash_completion
+fi
+
