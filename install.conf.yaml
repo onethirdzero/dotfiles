@@ -22,6 +22,10 @@
     ~/.gitignore:
         path: git/gitignore
 
+    # Vim
+    ~/.vimrc:
+        path: vim/vimrc
+
 - shell:
     # Keep the submodule up to date
     - [git submodule update --init --recursive, Installing submodules]
