@@ -27,3 +27,9 @@ fi
 export ANDROID_HOME=${HOME}/Library/Android/sdk
 export PATH=${PATH}:${ANDROID_HOME}/tools
 export PATH=${PATH}:${ANDROID_HOME}/platform-tools
+
+# For convenience when working with Go.
+export PATH=$PATH:$GOPATH/bin
+
+# added by Anaconda3 4.3.1 installer
+export PATH=:$PATH:/Users/jordan/anaconda3/bin
