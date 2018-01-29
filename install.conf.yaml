@@ -2,6 +2,7 @@
     link:
         relink: true
         create: true
+        force: true
 
 - clean: ['~']
 
@@ -26,6 +27,12 @@
     ~/.vimrc:
         path: vim/vimrc
 
+    # Zsh
+    ~/.zshrc:
+        path: zsh/zshrc
+
+
 - shell:
     # Keep the submodule up to date
     - [git submodule update --init --recursive, Installing submodules]
+
