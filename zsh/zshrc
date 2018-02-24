@@ -1,6 +1,10 @@
 # Path to my oh-my-zsh installation.
 export ZSH=/Users/jordan/.oh-my-zsh
 
+# Enable additional glyphs in Awesome-TerminalFont's special character set.
+# https://github.com/bhilburn/powerlevel9k/wiki/Install-Instructions#option-3-install-awesome-powerline-fonts
+POWERLEVEL9K_MODE='awesome-patched'
+
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
@@ -9,7 +13,7 @@ ZSH_THEME="powerlevel9k/powerlevel9k"
 # Powerlevel9k config.
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs background_jobs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status time)
 POWERLEVEL9K_SHORTEN_STRATEGY="truncate_middle"
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=3
@@ -23,6 +27,7 @@ POWERLEVEL9K_DIR_HOME_FOREGROUND='236'
 POWERLEVEL9K_DIR_DEFAULT_FOREGROUND='236'
 POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND='236'
 
+POWERLEVEL9K_VCS_GIT_GITHUB_ICON='\uE1AA'
 POWERLEVEL9K_VCS_CLEAN_BACKGROUND='236'
 POWERLEVEL9K_VCS_CLEAN_BACKGROUND='119'
 POWERLEVEL9K_VCS_CLEAN_FOREGROUND='236'
@@ -30,6 +35,9 @@ POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND='214'
 POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND='236'
 POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='196'
 POWERLEVEL9K_VCS_MODIFIED_FOREGROUND='236'
+
+POWERLEVEL9K_BACKGROUND_JOBS_FOREGROUND='236'
+POWERLEVEL9K_BACKGROUND_JOBS_BACKGROUND='220'
 
 # Uncomment the following line to use hyphen-insensitive completion. Case
 # sensitive completion must be off. _ and - will be interchangeable.
@@ -77,7 +85,6 @@ export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 
 # Aliases.
-eval "$(thefuck --alias)"
 alias ls="ls --color=always"
 alias grep="grep --color=always"
 alias vim="/usr/local/bin/vim" # Mac's built-in Vim doesn't have clipboard support.
