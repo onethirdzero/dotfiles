@@ -28,6 +28,7 @@
         path: vim/vimrc
     ~/.vim/autoload:
         path: vim/autoload
+    # Be mindful of the submodules installed here.
     ~/.vim/bundle:
         path: vim/bundle
     ~/.vim/colors:
@@ -36,9 +37,11 @@
     # Zsh
     ~/.zshrc:
         path: zsh/zshrc
-
+    # Be mindful of the submodules installed here.
+    ~/.oh-my-zsh/custom/plugins:
+        path: zsh/oh-my-zsh/custom/plugins
 
 - shell:
-    # Keep the submodule up to date
+    # Keep the submodule up to date.
     - [git submodule update --init --recursive, Installing submodules]
 
