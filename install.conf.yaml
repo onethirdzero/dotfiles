@@ -26,6 +26,12 @@
     # Vim
     ~/.vimrc:
         path: vim/vimrc
+    ~/.vim/autoload:
+        path: vim/autoload
+    ~/.vim/bundle:
+        path: vim/bundle
+    ~/.vim/colors:
+        path: vim/colors
 
     # Zsh
     ~/.zshrc:
