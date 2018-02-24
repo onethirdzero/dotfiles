@@ -1,3 +1,52 @@
+" For plugins.
+execute pathogen#infect()
+
+" Use the desktop clipboard on macOS.
 set clipboard=unnamed
 
+" This assumes the correct font is installed.
 set guifont=Inconsolata-dz:h14
+
+" Move around wrapped lines like modern editors, instead of on a line-wise basis.
+" https://statico.github.io/vim.html#rudimentary-essentials
+nmap j gj
+nmap k gk
+
+" Sets hybrid line numbers: relative and absolute line numbers.
+set number relativenumber
+
+" Toggles between relative and hybrid line numbers when toggling insert mode.
+" https://jeffkreeftmeijer.com/vim-number/
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
+
+" Sets the ruler in the status bar.
+set ruler
+
+" For syntax highlighting.
+syntax on
+
+" Highlight text as you type the search query.
+set incsearch
+
+" Make searches case-insensitive except when you include upper-case characters.
+" https://statico.github.io/vim.html#rudimentary-essentials
+set ignorecase smartcase
+
+" Highlight search results.
+set hlsearch
+
+" Clear highlighted search results.
+" https://statico.github.io/vim.html#rudimentary-essentials
+nmap \q :nohlsearch<CR>
+
+" Map keys for smooth scrolling.
+" https://github.com/terryma/vim-smooth-scroll
+noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
+noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
+noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
+noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
+
