@@ -50,3 +50,28 @@ noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
 noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
 noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 
+" Return to the previously editted file in the buffer.
+" https://statico.github.io/vim.html#rudimentary-essentials
+nmap <C-b> :b#<CR>
+
+" Move between files in the editting buffer.
+" https://statico.github.io/vim.html#rudimentary-essentials
+nmap <C-n> :bnext<CR>
+nmap <C-p> :bprev<CR>
+
+" Toggle auto-indenting for code pasting.
+" https://statico.github.io/vim.html#customizing-vim-a-preamble
+nmap \o :set paste!<CR>
+
+" Show pasting mode.
+" http://vim.wikia.com/wiki/Toggle_auto-indenting_for_code_paste
+set showmode
+
+" Map to CtrlP's buffer search.
+" https://statico.github.io/vim.html#yes-my-editor-does-that
+nmap <Leader>t :CtrlPBuffer<CR>
+
+" Map to CtrlP's file search.
+" https://statico.github.io/vim.html#yes-my-editor-does-that
+let g:ctrlp_map = '<Leader>f'
+
