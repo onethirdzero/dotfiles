@@ -4,6 +4,10 @@ execute pathogen#infect()
 " Use the desktop clipboard on macOS.
 set clipboard=unnamed
 
+" Enable automatic things for different filetypes.
+" https://vi.stackexchange.com/questions/10124/what-is-the-difference-between-filetype-plugin-indent-on-and-filetype-indent
+filetype plugin indent on
+
 " This assumes the correct font is installed.
 set guifont=Inconsolata-dz:h14
 
@@ -26,8 +30,26 @@ augroup END
 " Sets the ruler in the status bar.
 set ruler
 
+" Highlight the current line.
+set cursorline
+
 " For syntax highlighting.
-syntax on
+" https://stackoverflow.com/questions/33380451/is-there-a-difference-between-syntax-on-and-syntax-enable-in-vimscript
+if !exists("g:syntax_on")
+  syntax enable
+endif
+
+" For spaces over tabs.
+set expandtab
+set tabstop=2
+
+" For number of spaces inserted for indentation.
+set shiftwidth=2
+
+" Toggles the visibility of tab and space characters.
+" http://vim.wikia.com/wiki/Highlight_unwanted_spaces
+" Mnemonic: 'w' for whitespace.
+nmap \w :set list!<CR>
 
 " Highlight text as you type the search query.
 set incsearch
@@ -59,7 +81,7 @@ nmap <C-b> :b#<CR>
 nmap <C-n> :bnext<CR>
 nmap <C-p> :bprev<CR>
 
-" Toggle auto-indenting for code pasting.
+" Toggle auto-indenting when code pasting.
 " https://statico.github.io/vim.html#customizing-vim-a-preamble
 nmap \o :set paste!<CR>
 
@@ -74,4 +96,3 @@ nmap <Leader>t :CtrlPBuffer<CR>
 " Map to CtrlP's file search.
 " https://statico.github.io/vim.html#yes-my-editor-does-that
 let g:ctrlp_map = '<Leader>f'
-
