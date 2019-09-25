@@ -96,3 +96,8 @@ nmap <Leader>t :CtrlPBuffer<CR>
 " Map to CtrlP's file search.
 " https://statico.github.io/vim.html#yes-my-editor-does-that
 let g:ctrlp_map = '<Leader>f'
+
+" Make backspace work normally.
+" https://vi.stackexchange.com/questions/2162/why-doesnt-the-backspace-key-work-in-insert-mode
+set backspace=indent,eol,start
+

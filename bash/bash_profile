@@ -38,3 +38,6 @@ export PATH=${PATH}:/Users/jordan/anaconda3/bin
 export PATH=${PATH}:${HOME}/spark-2.1.1-bin-hadoop2.7/bin
 export PYSPARK_DRIVER_PYTHON=ipython3
 
+# For mySQL.
+export=PATH${PATH}:/usr/local/mysql/bin
+

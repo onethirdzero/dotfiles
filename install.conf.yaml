@@ -41,6 +41,10 @@
     ~/.oh-my-zsh/custom/plugins:
         path: zsh/oh-my-zsh/custom/plugins
 
+    # Tmux
+    ~/.tmux.conf:
+        path: tmux/tmux.conf
+
 - shell:
     # Keep the submodule up to date.
     - [git submodule update --init --recursive, Installing submodules]
