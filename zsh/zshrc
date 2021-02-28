@@ -11,43 +11,10 @@ export ZSH=/Users/jordan/.oh-my-zsh
 # Enable 256 colours.
 export TERM="xterm-256color"
 
-# Enable additional glyphs via Nerd-Fonts.
-# https://github.com/Powerlevel9k/powerlevel10k/wiki/install-instructions#option-4-install-nerd-fonts
-POWERLEVEL9K_MODE='nerdfont-complete'
-
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="powerlevel10k/powerlevel10k"
-
-# Powerlevel9k config.
-POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs background_jobs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status time)
-POWERLEVEL9K_SHORTEN_STRATEGY="truncate_middle"
-POWERLEVEL9K_SHORTEN_DIR_LENGTH=3
-
-# Gruvbox colours for Powerlevel9k.
-# Based on https://github.com/bhilburn/powerlevel10k/wiki/Show-Off-Your-Config#miguelcaraxs-configuration.
-POWERLEVEL9K_DIR_HOME_BACKGROUND='09'
-POWERLEVEL9K_DIR_DEFAULT_BACKGROUND='09'
-POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND='009'
-POWERLEVEL9K_DIR_HOME_FOREGROUND='236'
-POWERLEVEL9K_DIR_DEFAULT_FOREGROUND='236'
-POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND='236'
-
-POWERLEVEL9K_VCS_GIT_GITHUB_ICON='\uf09b'
-POWERLEVEL9K_VCS_CLEAN_BACKGROUND='236'
-POWERLEVEL9K_VCS_CLEAN_BACKGROUND='119'
-POWERLEVEL9K_VCS_CLEAN_FOREGROUND='236'
-POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND='214'
-POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND='236'
-POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='196'
-POWERLEVEL9K_VCS_MODIFIED_FOREGROUND='236'
-
-POWERLEVEL9K_BACKGROUND_JOBS_FOREGROUND='236'
-POWERLEVEL9K_BACKGROUND_JOBS_BACKGROUND='220'
 
 # Uncomment the following line to use hyphen-insensitive completion. Case
 # sensitive completion must be off. _ and - will be interchangeable.
