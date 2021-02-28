@@ -1,17 +1,24 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # Path to my oh-my-zsh installation.
 export ZSH=/Users/jordan/.oh-my-zsh
 
 # Enable 256 colours.
 export TERM="xterm-256color"
 
-# Enable additional glyphs in Awesome-TerminalFont's special character set.
-# https://github.com/bhilburn/powerlevel9k/wiki/Install-Instructions#option-3-install-awesome-powerline-fonts
-POWERLEVEL9K_MODE='awesome-patched'
+# Enable additional glyphs via Nerd-Fonts.
+# https://github.com/Powerlevel9k/powerlevel10k/wiki/install-instructions#option-4-install-nerd-fonts
+POWERLEVEL9K_MODE='nerdfont-complete'
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="powerlevel9k/powerlevel9k"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Powerlevel9k config.
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
@@ -22,7 +29,7 @@ POWERLEVEL9K_SHORTEN_STRATEGY="truncate_middle"
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=3
 
 # Gruvbox colours for Powerlevel9k.
-# Based on https://github.com/bhilburn/powerlevel9k/wiki/Show-Off-Your-Config#miguelcaraxs-configuration.
+# Based on https://github.com/bhilburn/powerlevel10k/wiki/Show-Off-Your-Config#miguelcaraxs-configuration.
 POWERLEVEL9K_DIR_HOME_BACKGROUND='09'
 POWERLEVEL9K_DIR_DEFAULT_BACKGROUND='09'
 POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND='009'
@@ -30,7 +37,7 @@ POWERLEVEL9K_DIR_HOME_FOREGROUND='236'
 POWERLEVEL9K_DIR_DEFAULT_FOREGROUND='236'
 POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND='236'
 
-POWERLEVEL9K_VCS_GIT_GITHUB_ICON='\uE1AA'
+POWERLEVEL9K_VCS_GIT_GITHUB_ICON='\uf09b'
 POWERLEVEL9K_VCS_CLEAN_BACKGROUND='236'
 POWERLEVEL9K_VCS_CLEAN_BACKGROUND='119'
 POWERLEVEL9K_VCS_CLEAN_FOREGROUND='236'
@@ -53,7 +60,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-completion zsh-syntax-highlighting)
+plugins=(git zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -74,10 +81,6 @@ export ARCHFLAGS="-arch x86_64"
 # ssh
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 
-# For convenience when working with Go.
-export GOPATH=$(go env GOPATH)
-export PATH=$PATH:$(go env GOPATH)/bin
-
 # For adb.
  if [ -d "$HOME/adb-fastboot/platform-tools" ] ; then
      export PATH="$HOME/adb-fastboot/platform-tools:$PATH"
@@ -91,6 +94,8 @@ export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 alias ls="ls --color=always"
 alias grep="grep --color=always"
 alias vim="/usr/local/bin/vim" # Mac's built-in Vim doesn't have clipboard support.
+alias g="git"
+alias matlab="matlab -nodesktop -nosplash"
 
 # Directory colors.
 # Disabled because the solarized colours don't complement gruvbox.
@@ -121,6 +126,8 @@ if [ -f '/Users/jordan/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/jo
 # For Flutter SDK.
 export PATH="$PATH:$HOME/flutter/bin"
 
-alias g="git"
-alias matlab="matlab -nodesktop -nosplash"
+# https://github.com/mubaris/motivate
+motivate
 
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

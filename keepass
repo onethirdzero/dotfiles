@@ -192,7 +192,7 @@ if __name__ == '__main__':
                     print(selected.notes)
 
                 # Refocus last-focused window and type in password
-                # TODO: osascript and xdotool are macOS specific. Make them work.
+                # TODO: osascript is macOS specific, but xdotool is for Linux. Anyhow, make them work.
                 subprocess.Popen(['osascript', '-e', 'script goes here']).wait()
                 subprocess.Popen(['xdotool', 'type', selected.password]).wait()
 

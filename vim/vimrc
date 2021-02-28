@@ -101,3 +101,6 @@ let g:ctrlp_map = '<Leader>f'
 " https://vi.stackexchange.com/questions/2162/why-doesnt-the-backspace-key-work-in-insert-mode
 set backspace=indent,eol,start
 
+" Use case-insensitive search. \C for case-sensitive search.
+set ignorecase
+
