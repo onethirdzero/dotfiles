@@ -37,6 +37,9 @@
     # Zsh
     ~/.zshrc:
         path: zsh/zshrc
+    ~/.p10k.zsh:
+        path: zsh/p10k
+
     # Be mindful of the submodules installed here.
     ~/.oh-my-zsh/custom/plugins:
         path: zsh/oh-my-zsh/custom/plugins
