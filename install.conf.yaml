@@ -48,6 +48,9 @@
     ~/.tmux.conf:
         path: tmux/tmux.conf
 
+    ~/com.googlecode.iterm2.plist:
+        path: iterm/plist
+
 - shell:
     # Keep the submodule up to date.
     - [git submodule update --init --recursive, Installing submodules]
