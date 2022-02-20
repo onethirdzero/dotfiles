@@ -18,10 +18,6 @@
     ~/.vim/colors:
         path: vim/colors
 
-    # Tmux
-    ~/.tmux.conf:
-        path: tmux/tmux.conf
-
     ~/com.googlecode.iterm2.plist:
         path: iterm/plist
 
