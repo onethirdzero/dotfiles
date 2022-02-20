@@ -2,27 +2,11 @@
     link:
         relink: true
         create: true
-        force: true
+        force: false
 
 - clean: ['~']
 
 - link:
-    # Bash
-    ~/.bash_profile:
-        path: bash/bash_profile
-    ~/.bashrc:
-        path: bash/bashrc
-    ~/.bash_prompt:
-        path: bash/bash_prompt
-    ~/.dir_colors:
-        path: bash/dir_colors
-
-    # Git
-    ~/.gitconfig:
-        path: git/gitconfig
-    ~/.gitignore:
-        path: git/gitignore
-
     # Vim
     ~/.vimrc:
         path: vim/vimrc
@@ -33,16 +17,6 @@
         path: vim/bundle
     ~/.vim/colors:
         path: vim/colors
-
-    # Zsh
-    ~/.zshrc:
-        path: zsh/zshrc
-    ~/.p10k.zsh:
-        path: zsh/p10k
-
-    # Be mindful of the submodules installed here.
-    ~/.oh-my-zsh/custom/plugins:
-        path: zsh/oh-my-zsh/custom/plugins
 
     # Tmux
     ~/.tmux.conf:
