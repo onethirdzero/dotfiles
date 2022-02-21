@@ -1,0 +1,9 @@
+# Ignore dotbot-managed dotfiles.
+vim/
+iterm/
+dotbot/
+install
+install.conf.yaml
+keepass
+
+README.md
