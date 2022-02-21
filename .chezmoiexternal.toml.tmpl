@@ -1,0 +1,11 @@
+{{- if ne .workdotfilesrepo "" }}
+[".zshrc_work"]
+  type = "file"
+  url = "{{ .workDotfilesRepo }}/main/.zshrc"
+  refreshPeriod = "168h"
+
+[".gitconfig_work"]
+  type = "file"
+  url = "{{ .workDotfilesRepo }}/main/.gitconfig"
+  refreshPeriod = "168h"
+{{ end -}} 

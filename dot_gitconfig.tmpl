@@ -19,3 +19,15 @@
 
 [core]
   editor = vim
+
+[rebase]
+  autosquash = true
+
+[rerere]
+  enabled = true
+
+{{- if ne .workdotfilesrepo "" }}
+##################################### work #####################################
+{{ include ".gitconfig_work" }}
+##################################### work #####################################
+{{ end -}}

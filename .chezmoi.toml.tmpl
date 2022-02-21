@@ -1,6 +1,11 @@
 {{- $email := promptString "email" -}}
 {{- $name := promptString "name" -}}
+{{- $workDotfilesRepo := promptString "work dotfiles repo" }}
 
 [data]
     email = {{ $email | quote }}
     name = {{ $name | quote }}
+
+    # When accessing this in templates, use all lowercase. ie. workdotfilesrepo.
+    # https://www.chezmoi.io/user-guide/frequently-asked-questions/design/#why-does-chezmoi-convert-all-my-template-variables-to-lowercase
+    workDotfilesRepo = {{ $workDotfilesRepo | quote }}
