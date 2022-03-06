@@ -13,3 +13,5 @@ Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdtree'
 
 call plug#end()
+
+colorscheme gruvbox
