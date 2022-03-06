@@ -1,6 +1,6 @@
 {{- $email := promptString "email" -}}
 {{- $name := promptString "name" -}}
-{{- $workDotfilesRepo := promptString "work dotfiles repo" }}
+{{- $workDotfilesRepo := promptString "work dotfiles repo" -}}
 
 [data]
     email = {{ $email | quote }}
