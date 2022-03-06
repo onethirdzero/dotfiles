@@ -1,12 +1,13 @@
-# Dotfiles
+# dotfiles
 
-Inspired and managed by [Dotbot](https://github.com/anishathalye/dotbot).
+Managed via [chezmoi](https://www.chezmoi.io/).
 
-### Installation
+### On a new machine
+
+1. Clone this repo.
+2. Run:
+
+```console
+cd dotfiles
+./bootstrap.sh
 ```
-$ cd ~
-$ git clone git@github.com:onethirdzero/dotfiles.git
-$ cd ~/.dotfiles
-$ ./install
-```
-

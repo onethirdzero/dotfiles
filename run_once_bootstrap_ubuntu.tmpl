@@ -1,0 +1,29 @@
+{{- if eq .chezmoi.osRelease.name "Ubuntu" -}}
+#!/bin/bash
+
+# Ensure neovim.
+if ! command -v nvim >/dev/null; then
+	sudo apt install neovim
+fi
+
+# Ensure fzf.
+if ! command -v fzf >/dev/null; then
+	sudo apt install fzf
+fi
+
+# Ensure bat.
+if ! command -v bat >/dev/null; then
+	sudo apt install bat
+	bat_symlink_dest="/usr/local/bin/bat"
+	sudo rm $bat_symlink_dest
+	sudo ln -s $(which batcat) $bat_symlink_dest
+fi
+
+# Ensure fd.
+if ! command -v fd >/dev/null; then
+	sudo apt install fd-find
+	fd_symlink_dest="/usr/local/bin/fd"
+	sudo rm $fd_symlink_dest
+	sudo ln -s $(which fdfind) $fd_symlink_dest
+fi
+{{- end -}}
