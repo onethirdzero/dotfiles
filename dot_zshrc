@@ -10,14 +10,7 @@ source "${HOME}/.zgen/zgen.zsh"
 
 # If the init script doesn't exist.
 if ! zgen saved; then
-  # Specify plugins here.
-  # "zgen oh-my-zsh" is a shortcut for oh-my-zsh built-in plugins.
-  # https://github.com/tarjoilija/zgen#oh-my-zsh
-
-  zgen oh-my-zsh # Base dependency.
-  zgen oh-my-zsh plugins/git
-
-  # Specify themes here.
+  # Specify plugins and themes here.
   zgen load romkatv/powerlevel10k powerlevel10k 
   zgen load zsh-users/zsh-autosuggestions
   zgen load zsh-users/zsh-syntax-highlighting
@@ -51,7 +44,6 @@ COMPLETION_WAITING_DOTS="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-	git
 	zsh-autosuggestions # Suggestions from partial input. Like fish shell.
 	zsh-syntax-highlighting
 )
