@@ -1,0 +1,26 @@
+{{- if eq .chezmoi.os "darwin" -}}
+#!/bin/bash
+
+# Ensure neovim.
+if ! command -v nvim >/dev/null; then
+	brew install neovim
+fi
+
+# Ensure fzf.
+if ! command -v fzf >/dev/null; then
+	brew install fzf
+
+  # To install useful key bindings and fuzzy completion:
+  $(brew --prefix)/opt/fzf/install
+fi
+
+# Ensure bat.
+if ! command -v bat >/dev/null; then
+  brew install bat
+fi
+
+# Ensure fd.
+if ! command -v fd >/dev/null; then
+  brew install fd
+fi
+{{- end -}}
