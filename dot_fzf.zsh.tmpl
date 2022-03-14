@@ -3,7 +3,6 @@
 {{- if eq .chezmoi.os "darwin" }}
 if [[ ! "$PATH" == */usr/local/opt/fzf/bin* ]]; then
   export PATH="${PATH:+${PATH}:}/usr/local/opt/fzf/bin"
-fi
 {{- else if (hasKey .chezmoi.osRelease "name") }}
 {{- if eq .chezmoi.osRelease.name "Ubuntu" }}
 if [[ ! "$PATH" == */home/jordan/.fzf/bin* ]]; then
@@ -24,7 +23,13 @@ fi
 
 # Key bindings
 # ------------
+{{- if eq .chezmoi.os "darwin" }}
+source "/usr/local/opt/fzf/shell/key-bindings.zsh"
+{{- else if (hasKey .chezmoi.osRelease "name") }}
+{{- if eq .chezmoi.osRelease.name "Ubuntu" }}
 source "/home/jordan/.fzf/shell/key-bindings.zsh"
+{{- end }}
+{{- end }}
 
 # User config.
 
