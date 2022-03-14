@@ -1,0 +1,60 @@
+#!/bin/bash
+
+# Ensure neovim.
+if ! command -v nvim >/dev/null; then
+{{- if eq .chezmoi.os "darwin" }}
+    brew install neovim
+{{- else if (hasKey .chezmoi.osRelease "name") }}
+{{- if (eq .chezmoi.osRelease.name "Ubuntu") }}
+    sudo apt install neovim
+{{- end }}
+{{- end }}
+fi
+
+# Ensure vim-plug.
+if [ ! -f ~/.vim/autoload/plug.vim ]; then
+    curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+fi
+
+# Ensure fzf.
+if ! command -v fzf >/dev/null; then
+{{- if eq .chezmoi.os "darwin" }}
+    brew install fzf
+
+    # To install useful key bindings and fuzzy completion:
+    $(brew --prefix)/opt/fzf/install
+{{- else if (hasKey .chezmoi.osRelease "name") }}
+{{- if (eq .chezmoi.osRelease.name "Ubuntu") }}
+    sudo apt install fzf
+{{- end }}
+{{- end }}
+fi
+
+# Ensure bat.
+if ! command -v bat >/dev/null; then
+{{- if eq .chezmoi.os "darwin" }}
+    brew install bat
+{{- else if (hasKey .chezmoi.osRelease "name") }}
+{{- if (eq .chezmoi.osRelease.name "Ubuntu") }}
+    sudo apt install bat
+    bat_symlink_dest="/usr/local/bin/bat"
+    sudo rm $bat_symlink_dest
+    sudo ln -s $(which batcat) $bat_symlink_dest
+{{- end }}
+{{- end }}
+fi
+
+# Ensure fd.
+if ! command -v fd >/dev/null; then
+{{- if eq .chezmoi.os "darwin" }}
+    brew install fd
+{{- else if (hasKey .chezmoi.osRelease "name") }}
+{{- if (eq .chezmoi.osRelease.name "Ubuntu") }}
+    sudo apt install fd-find
+    fd_symlink_dest="/usr/local/bin/fd"
+    sudo rm $fd_symlink_dest
+    sudo ln -s $(which fdfind) $fd_symlink_dest
+{{- end }}
+{{- end }}
+fi
