@@ -3,7 +3,9 @@
 
 WORK_DOTFILES_DEST="${HOME}/dotfiles"
 
-git clone {{ .workdotfilesrepo }} $WORK_DOTFILES_DEST
+if [[ ! -d $WORK_DOTFILES_DEST ]]; then
+  git clone {{ .workdotfilesrepo }} $WORK_DOTFILES_DEST
+fi
 
 cat $WORK_DOTFILES_DEST/.zshrc > ~/.zshrc
 cat $WORK_DOTFILES_DEST/.gitconfig > ~/.gitconfig
