@@ -24,10 +24,11 @@ fi
 # Key bindings
 # ------------
 {{- if eq .chezmoi.os "darwin" }}
-source "/usr/local/opt/fzf/shell/key-bindings.zsh"
+source /usr/local/opt/fzf/shell/key-bindings.zsh
 {{- else if (hasKey .chezmoi.osRelease "name") }}
 {{- if eq .chezmoi.osRelease.name "Ubuntu" }}
-source "/home/jordan/.fzf/shell/key-bindings.zsh"
+source /usr/share/doc/fzf/examples/key-bindings.zsh
+source /usr/share/doc/fzf/examples/completion.zsh
 {{- end }}
 {{- end }}
 
