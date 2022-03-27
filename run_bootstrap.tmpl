@@ -19,16 +19,8 @@ fi
 
 # Ensure fzf.
 if ! command -v fzf >/dev/null; then
-{{- if eq .chezmoi.os "darwin" }}
-    brew install fzf
-
-    # To install useful key bindings and fuzzy completion:
-    $(brew --prefix)/opt/fzf/install
-{{- else if (hasKey .chezmoi.osRelease "name") }}
-{{- if (eq .chezmoi.osRelease.name "Ubuntu") }}
-    sudo apt install fzf
-{{- end }}
-{{- end }}
+    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+    ~/.fzf/install
 fi
 
 # Ensure bat.
