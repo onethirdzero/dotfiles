@@ -7,6 +7,6 @@ if [[ ! -d $WORK_DOTFILES_DEST ]]; then
   git clone {{ .workdotfilesrepo }} $WORK_DOTFILES_DEST
 fi
 
-cat $WORK_DOTFILES_DEST/.zshrc > ~/.zshrc
-cat $WORK_DOTFILES_DEST/.gitconfig > ~/.gitconfig
+cat $WORK_DOTFILES_DEST/.zshrc >> ~/.zshrc
+cat $WORK_DOTFILES_DEST/.gitconfig >> ~/.gitconfig
 {{- end -}}
