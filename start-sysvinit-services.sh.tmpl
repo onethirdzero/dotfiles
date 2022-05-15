@@ -1,0 +1,11 @@
+{{- if eq .chezmoi.hostname "kamino" }}{{/* There is no substring function in Go templates, so there's no way to detect the WSL-specific .chezmoi.kernel.osrelease string. We'll settle for this workaround for now. */}}
+#!/bin/bash
+
+# WSL still needs to be user-started after a Windows reboot, so 
+# we'll rely on Task Scheduler to call our startup script
+# Based on: https://dev.to/ironfroggy/wsl-tips-starting-linux-background-services-on-windows-login-3o98
+
+service cron start
+service rsyslog start
+
+{{- end }}
