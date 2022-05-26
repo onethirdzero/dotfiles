@@ -10,6 +10,7 @@ requires git
 # Ensure chezmoi.
 if ! command -v chezmoi >/dev/null; then
 	sh -c "$(wget -qO- chezmoi.io/get)" || sh -c "$(curl -fsLS chezmoi.io/get)"
+	mv ./bin/chezmoi /usr/local/bin/
 
 	# Set up dotfiles.
 	chezmoi init --apply --verbose git@github.com:onethirdzero/dotfiles.git
