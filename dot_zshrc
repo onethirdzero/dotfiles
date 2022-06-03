@@ -66,3 +66,9 @@ alias less="bat"
 # Load fzf config.
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# Handy alias from @jdavidson for automating the fixup and rebase workflow.
+# Requires autostash=true.
+function gitfixr() { 
+	git commit --fixup=$1 && git rebase -i --autosquash $1^
+}
+alias fixr="gitfixr"
