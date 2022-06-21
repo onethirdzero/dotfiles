@@ -73,3 +73,14 @@ if ! command -v fd >/dev/null; then
 {{- end }}
 {{- end }}
 fi
+
+# Ensure tmux.
+if ! command -v tmux >/dev/null; then
+{{- if eq .chezmoi.os "darwin" }}
+    brew install tmux
+{{- else if (hasKey .chezmoi.osRelease "name") }}
+{{- if (eq .chezmoi.osRelease.name "Ubuntu") }}
+    sudo apt install tmux
+{{- end }}
+{{- end }}
+fi
