@@ -37,6 +37,29 @@ if ! command -v bat >/dev/null; then
 {{- end }}
 fi
 
+# Ensure exa.
+if ! command -v exa >/dev/null; then
+{{- if eq .chezmoi.os "darwin" }}
+    brew install exa
+{{- else if (hasKey .chezmoi.osRelease "name") }}
+{{- if (eq .chezmoi.osRelease.name "Ubuntu") }}
+    sudo apt install exa
+{{- end }}
+{{- end }}
+fi
+
+# Ensure delta.
+if ! command -v delta >/dev/null; then
+{{- if eq .chezmoi.os "darwin" }}
+    brew install git-delta
+{{- else if (hasKey .chezmoi.osRelease "name") }}
+{{- if (eq .chezmoi.osRelease.name "Ubuntu") }}
+	curl -sJLO https://github.com/dandavison/delta/releases/download/0.13.0/git-delta_0.13.0_amd64.deb
+	dpkg -i git-delta_0.13.0_amd64.deb
+{{- end }}
+{{- end }}
+fi
+
 # Ensure fd.
 if ! command -v fd >/dev/null; then
 {{- if eq .chezmoi.os "darwin" }}
