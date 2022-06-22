@@ -44,16 +44,20 @@ plugins=(
 )
 
 # This behaviour seems to exist out-of-the-box elsewhere, but not on
-# M1 MacBook Pros.
+# M1 MacBook Pros with Alacritty 0.10.1 and Monterey 12.2.1.
 # https://github.com/zsh-users/zsh-history-substring-search#usage
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
 # This is required to stop "Alt + Left" and "Alt + Right" from misbehaving
 # in a chezmoi-started shell.
-# Seems to only happen on an M1 MacBook Pro with Alacritty 0.10.1 and Montery 12.2.1.
+# Seems to only happen on an M1 MacBook Pro with Alacritty 0.10.1 and Monterey 12.2.1.
 bindkey "^[b" backward-word
 bindkey "^[f" forward-word
+
+# This is required for "Alt + ." behaviour to work properly on M1 MacBook Pros
+# with Alacritty 0.10.1 and Monterey 12.2.1.
+bindkey "^[." insert-last-word
 
 # User configuration
 
