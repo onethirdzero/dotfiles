@@ -59,6 +59,10 @@ bindkey "^[f" forward-word
 # with Alacritty 0.10.1 and Monterey 12.2.1.
 bindkey "^[." insert-last-word
 
+# This is required for "Alt + Backspace" behaviour to work properly on M1 MacBook Pros
+# with Alacritty 0.10.1 and Monterey 12.2.1.
+bindkey "^[^?" backward-delete-word
+
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
