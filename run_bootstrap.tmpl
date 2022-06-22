@@ -84,3 +84,11 @@ if ! command -v tmux >/dev/null; then
 {{- end }}
 {{- end }}
 fi
+
+# Ensure motivate.
+if ! command -v motivate >/dev/null; then
+    git clone https://github.com/mubaris/motivate.git "${HOME}/dev/motivate"
+	cd "${HOME}/dev/motivate/motivate"
+	sudo ./install.sh
+	cd -
+fi
