@@ -1,5 +1,12 @@
 #!/bin/bash
 
+set -euo pipefail
+{{- if (hasKey .chezmoi.osRelease "name") }}
+{{- if (eq .chezmoi.osRelease.name "Ubuntu") }}
+    sudo apt update
+{{- end }}
+{{- end }}
+
 # Ensure neovim.
 if ! command -v nvim >/dev/null; then
 {{- if eq .chezmoi.os "darwin" }}
@@ -92,3 +99,32 @@ if ! command -v motivate >/dev/null; then
 	sudo ./install.sh
 	cd -
 fi
+
+# Ensure docker.
+if ! command -v docker >/dev/null; then
+{{- if eq .chezmoi.os "darwin" }}
+    brew install --cask docker
+{{- else if (hasKey .chezmoi.osRelease "name") }}
+{{- if (eq .chezmoi.osRelease.name "Ubuntu") }}
+    sudo apt install -y docker-ce docker-ce-cli containerd.io
+{{- end }}
+{{- end }}
+fi
+
+# Ensure go.
+if ! command -v go >/dev/null; then
+{{- if eq .chezmoi.os "darwin" }}
+    brew install go
+{{- else if (hasKey .chezmoi.osRelease "name") }}
+{{- if (eq .chezmoi.osRelease.name "Ubuntu") }}
+    sudo apt install golang-go
+{{- end }}
+{{- end }}
+fi
+
+# Ensure timer app (Mac OS).
+{{- if eq .chezmoi.os "darwin" }}
+if [ ! -d /Applications/Timer.app ]; then
+	brew install --cask michaelvillar-timer
+fi
+{{- end }}

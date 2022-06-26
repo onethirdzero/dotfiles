@@ -1,6 +1,8 @@
 {{- if not (eq .workdotfilesrepo "") -}}
 #!/bin/bash
 
+set -euo pipefail
+
 WORK_DOTFILES_DEST="${HOME}/dotfiles"
 
 if [[ ! -d $WORK_DOTFILES_DEST ]]; then
@@ -9,4 +11,35 @@ fi
 
 cat $WORK_DOTFILES_DEST/.zshrc >> ~/.zshrc
 cat $WORK_DOTFILES_DEST/.gitconfig >> ~/.gitconfig
-{{- end -}}
+
+{{- if (hasKey .chezmoi.osRelease "name") }}
+{{- if (eq .chezmoi.osRelease.name "Ubuntu") }}
+    sudo apt update
+{{- end }}
+{{- end }}
+
+# Ensure kubectl.
+if ! command -v kubectl >/dev/null; then
+{{- if eq .chezmoi.os "darwin" }}
+    brew install kubectl
+{{- else if (hasKey .chezmoi.osRelease "name") }}
+{{- if (eq .chezmoi.osRelease.name "Ubuntu") }}
+    sudo apt update && sudo apt install -y kubectl
+{{- end }}
+{{- end }}
+fi
+
+# Ensure pyenv.
+if ! command -v pyenv >/dev/null; then
+{{- if eq .chezmoi.os "darwin" }}
+    brew install pyenv
+    brew install pyenv-virtualenv
+{{- else if (hasKey .chezmoi.osRelease "name") }}
+{{- if (eq .chezmoi.osRelease.name "Ubuntu") }}
+    git clone https://github.com/pyenv/pyenv.git ~/.pyenv 
+	git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv
+{{- end }}
+{{- end }}
+fi
+
+{{- end }}
