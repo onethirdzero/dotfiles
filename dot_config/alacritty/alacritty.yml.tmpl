@@ -2,6 +2,20 @@ window:
    dimensions:
      columns: 390
      lines: 90
+font:
+  normal:
+    family: Inconsolata-dz for Powerline
+	# Can't seem to find the 'Regular' style in my Mac OS installation of this
+	# font, so I'll avoid the "not found" error by not specifying the style.
+  bold:
+    family: Inconsolata-dz for Powerline
+    style: Bold
+  italic:
+    family: Inconsolata-dz for Powerline
+    style: Italic
+  bold_italic:
+    family: Inconsolata-dz for Powerline
+    style: Bold Italic
 
 {{ if eq .chezmoi.os "darwin" -}}
 key_bindings:
