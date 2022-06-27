@@ -128,3 +128,15 @@ if [ ! -d /Applications/Timer.app ]; then
 	brew install --cask michaelvillar-timer
 fi
 {{- end }}
+
+
+# Ensure Visual Studio Code.
+{{- if eq .chezmoi.os "darwin" }}
+if [ ! -d "/Applications/Visual\ Studio\ Code.app" ]; then
+	brew install --cask visual-studio-code
+fi
+{{- else if (hasKey .chezmoi.osRelease "name") }}
+{{- if (eq .chezmoi.osRelease.name "Ubuntu") }}
+	sudo apt install code
+{{- end }}
+{{- end }}
