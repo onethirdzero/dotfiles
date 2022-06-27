@@ -18,13 +18,15 @@ cat $WORK_DOTFILES_DEST/.gitconfig >> ~/.gitconfig
 {{- end }}
 {{- end }}
 
-# Ensure kubectl.
+# Ensure kubectl and kubectx.
 if ! command -v kubectl >/dev/null; then
 {{- if eq .chezmoi.os "darwin" }}
     brew install kubectl
+    brew install kubectx
 {{- else if (hasKey .chezmoi.osRelease "name") }}
 {{- if (eq .chezmoi.osRelease.name "Ubuntu") }}
-    sudo apt update && sudo apt install -y kubectl
+    sudo apt install -y kubectl
+	sudo apt install -y kubectx
 {{- end }}
 {{- end }}
 fi
