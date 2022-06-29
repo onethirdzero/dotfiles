@@ -132,7 +132,7 @@ fi
 
 # Ensure Visual Studio Code.
 {{- if eq .chezmoi.os "darwin" }}
-if [ ! -d "/Applications/Visual\ Studio\ Code.app" ]; then
+if [ ! -d "/Applications/Visual Studio Code.app" ]; then
 	brew install --cask visual-studio-code
 fi
 {{- else if (hasKey .chezmoi.osRelease "name") }}
