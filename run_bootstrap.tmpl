@@ -140,3 +140,15 @@ fi
 	sudo apt install code
 {{- end }}
 {{- end }}
+
+# Ensure tree.
+if ! command -v tree >/dev/null; then
+{{- if eq .chezmoi.os "darwin" }}
+    brew install tree
+{{- else if (hasKey .chezmoi.osRelease "name") }}
+{{- if (eq .chezmoi.osRelease.name "Ubuntu") }}
+    sudo apt install tree
+{{- end }}
+{{- end }}
+fi
+
