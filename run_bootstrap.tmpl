@@ -152,3 +152,42 @@ if ! command -v tree >/dev/null; then
 {{- end }}
 fi
 
+# Ensure wireshark.
+if ! command -v wireshark >/dev/null; then
+{{- if eq .chezmoi.os "darwin" }}
+    brew install --cask wireshark
+{{- else if (hasKey .chezmoi.osRelease "name") }}
+{{- if (eq .chezmoi.osRelease.name "Ubuntu") }}
+    sudo apt install wireshark
+{{- end }}
+{{- end }}
+fi
+
+# Ensure jq.
+if ! command -v jq >/dev/null; then
+{{- if eq .chezmoi.os "darwin" }}
+    brew install jq
+{{- else if (hasKey .chezmoi.osRelease "name") }}
+{{- if (eq .chezmoi.osRelease.name "Ubuntu") }}
+    sudo apt install jq
+{{- end }}
+{{- end }}
+fi
+
+# Ensure jid.
+if ! command -v jid >/dev/null; then
+{{- if eq .chezmoi.os "darwin" }}
+    brew install jid
+{{- else if (hasKey .chezmoi.osRelease "name") }}
+{{- if (eq .chezmoi.osRelease.name "Ubuntu") }}
+    sudo apt install jid
+{{- end }}
+{{- end }}
+fi
+
+# Ensure AltTab (Mac OS).
+{{- if eq .chezmoi.os "darwin" }}
+if [ ! -d /Applications/AltTab.app ]; then
+	brew install --cask alt-tab
+fi
+{{- end }}
