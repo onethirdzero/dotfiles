@@ -191,3 +191,15 @@ if [ ! -d /Applications/AltTab.app ]; then
 	brew install --cask alt-tab
 fi
 {{- end }}
+
+# Ensure shellcheck.
+if ! command -v shellcheck >/dev/null; then
+{{- if eq .chezmoi.os "darwin" }}
+    brew install shellcheck
+{{- else if (hasKey .chezmoi.osRelease "name") }}
+{{- if (eq .chezmoi.osRelease.name "Ubuntu") }}
+    sudo apt install shellcheck
+{{- end }}
+{{- end }}
+fi
+
