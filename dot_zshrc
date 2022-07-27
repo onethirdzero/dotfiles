@@ -70,6 +70,24 @@ bindkey "^[^?" backward-delete-word
 # Preferred editor for local and remote sessions
 export EDITOR='nvim'
 
+# HISTFILE seems to already be set by some plugin.
+export HISTFILESIZE=1000000000
+export HISTSIZE=1000000000
+
+# Add commands to history immediately, so we can share it between shell sessions.
+setopt share_history
+
+# Add timestamp to command history.
+export HISTTIMEFORMAT="[%F %T] "
+setopt extended_history
+
+# More history configuration.
+# Taken from the ohmyzsh plugin: https://github.com/ohmyzsh/ohmyzsh/blob/28ed2880c766eb5a360354fb71d597dbc07abaa0/lib/history.zsh#L36-L39
+setopt hist_expire_dups_first # delete duplicates first when HISTFILE size exceeds HISTSIZE
+setopt hist_ignore_dups       # ignore duplicated commands history list
+setopt hist_ignore_space      # ignore commands that start with space
+setopt hist_verify            # show command with history expansion to user before running it
+
 alias g="git"
 alias cz="chezmoi"
 alias vim="nvim"
