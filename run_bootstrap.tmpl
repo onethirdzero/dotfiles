@@ -203,3 +203,13 @@ if ! command -v shellcheck >/dev/null; then
 {{- end }}
 fi
 
+# Ensure Java.
+if ! command -v java >/dev/null; then
+{{- if eq .chezmoi.os "darwin" }}
+    brew install --cask temurin
+{{- else if (hasKey .chezmoi.osRelease "name") }}
+{{- if (eq .chezmoi.osRelease.name "Ubuntu") }}
+    sudo apt install default-jdk
+{{- end }}
+{{- end }}
+fi
