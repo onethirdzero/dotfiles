@@ -44,4 +44,16 @@ if ! command -v pyenv >/dev/null; then
 {{- end }}
 fi
 
+# Ensure plantuml.
+if ! command -v plantuml >/dev/null; then
+{{- if eq .chezmoi.os "darwin" }}
+    brew install graphviz
+    brew install plantuml
+{{- else if (hasKey .chezmoi.osRelease "name") }}
+{{- if (eq .chezmoi.osRelease.name "Ubuntu") }}
+    sudo apt install plantuml -y
+{{- end }}
+{{- end }}
+fi
+
 {{- end }}
