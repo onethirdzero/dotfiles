@@ -213,3 +213,25 @@ if ! command -v java >/dev/null; then
 {{- end }}
 {{- end }}
 fi
+
+# Ensure ipcalc.
+if ! command -v ipcalc >/dev/null; then
+{{- if eq .chezmoi.os "darwin" }}
+    brew install ipcalc
+{{- else if (hasKey .chezmoi.osRelease "name") }}
+{{- if (eq .chezmoi.osRelease.name "Ubuntu") }}
+    sudo apt install ipcalc
+{{- end }}
+{{- end }}
+fi
+
+# Ensure fswatch.
+if ! command -v fswatch >/dev/null; then
+{{- if eq .chezmoi.os "darwin" }}
+    brew install fswatch
+{{- else if (hasKey .chezmoi.osRelease "name") }}
+{{- if (eq .chezmoi.osRelease.name "Ubuntu") }}
+    sudo apt install fswatch
+{{- end }}
+{{- end }}
+fi
