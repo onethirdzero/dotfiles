@@ -56,4 +56,15 @@ if ! command -v plantuml >/dev/null; then
 {{- end }}
 fi
 
+# Ensure jfrog.
+if ! command -v jfrog >/dev/null; then
+{{- if eq .chezmoi.os "darwin" }}
+    brew install jfrog-cli
+{{- else if (hasKey .chezmoi.osRelease "name") }}
+{{- if (eq .chezmoi.osRelease.name "Ubuntu") }}
+    sudo apt install jfrog-cli -y
+{{- end }}
+{{- end }}
+fi
+
 {{- end }}
