@@ -235,3 +235,10 @@ if ! command -v fswatch >/dev/null; then
 {{- end }}
 {{- end }}
 fi
+
+# Ensure watch on Mac OS.
+{{- if eq .chezmoi.os "darwin" }}
+if ! command -v watch >/dev/null; then
+    brew install watch
+fi
+{{- end }}
