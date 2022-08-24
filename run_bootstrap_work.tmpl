@@ -67,4 +67,15 @@ if ! command -v jfrog >/dev/null; then
 {{- end }}
 fi
 
+# Ensure kind.
+if ! command -v kind >/dev/null; then
+{{- if eq .chezmoi.os "darwin" }}
+    brew install kind
+{{- else if (hasKey .chezmoi.osRelease "name") }}
+{{- if (eq .chezmoi.osRelease.name "Ubuntu") }}
+    sudo apt install kind -y
+{{- end }}
+{{- end }}
+fi
+
 {{- end }}
