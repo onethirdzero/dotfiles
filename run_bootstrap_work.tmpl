@@ -78,4 +78,16 @@ if ! command -v kind >/dev/null; then
 {{- end }}
 fi
 
+# Ensure stern.
+if ! command -v stern >/dev/null; then
+{{- if eq .chezmoi.os "darwin" }}
+	brew tap demonware/tap https://github.ihs.demonware.net/Demonware/homebrew-tap.git
+    brew install stern
+{{- else if (hasKey .chezmoi.osRelease "name") }}
+{{- if (eq .chezmoi.osRelease.name "Ubuntu") }}
+    # TODO
+{{- end }}
+{{- end }}
+fi
+
 {{- end }}
