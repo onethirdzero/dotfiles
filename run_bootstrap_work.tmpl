@@ -90,4 +90,31 @@ if ! command -v stern >/dev/null; then
 {{- end }}
 fi
 
+# Ensure gpg.
+if ! command -v gpg >/dev/null; then
+{{- if eq .chezmoi.os "darwin" }}
+    brew install gnupg
+{{- else if (hasKey .chezmoi.osRelease "name") }}
+{{- if (eq .chezmoi.osRelease.name "Ubuntu") }}
+    apt install -y gpg
+{{- end }}
+{{- end }}
+fi
+
+# Ensure vault.
+if ! command -v vault >/dev/null; then
+{{- if eq .chezmoi.os "darwin" }}
+	brew tap hashicorp/tap
+    brew install hashicorp/tap/vault
+{{- else if (hasKey .chezmoi.osRelease "name") }}
+{{- if (eq .chezmoi.osRelease.name "Ubuntu") }}
+	wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg >/dev/null
+	gpg --no-default-keyring --keyring /usr/share/keyrings/hashicorp-archive-keyring.gpg --fingerprint
+	echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+    apt update && apt install -y vault
+{{- end }}
+{{- end }}
+fi
+
+
 {{- end }}
