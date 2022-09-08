@@ -72,7 +72,7 @@ export EDITOR='nvim'
 
 # HISTFILE seems to already be set by some plugin.
 export HISTFILESIZE=1000000000
-export HISTSIZE=1000000000
+export HISTSIZE=100000000000
 
 # Add commands to history immediately, so we can share it between shell sessions.
 setopt share_history
