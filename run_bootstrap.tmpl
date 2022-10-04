@@ -288,3 +288,13 @@ if ! command -v cargo >/dev/null; then
 {{- end }}
 fi
 
+# Ensure jc.
+if ! command -v jc >/dev/null; then
+{{- if eq .chezmoi.os "darwin" }}
+    brew install jc
+{{- else if (hasKey .chezmoi.osRelease "name") }}
+{{- if (eq .chezmoi.osRelease.name "Ubuntu") }}
+	sudo apt install -y jc
+{{- end }}
+{{- end }}
+fi
