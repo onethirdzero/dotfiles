@@ -298,3 +298,14 @@ if ! command -v jc >/dev/null; then
 {{- end }}
 {{- end }}
 fi
+
+# Ensure iperf.
+if ! command -v iperf >/dev/null; then
+{{- if eq .chezmoi.os "darwin" }}
+    brew install iperf3
+{{- else if (hasKey .chezmoi.osRelease "name") }}
+{{- if (eq .chezmoi.osRelease.name "Ubuntu") }}
+	sudo apt install -y iperf
+{{- end }}
+{{- end }}
+fi
