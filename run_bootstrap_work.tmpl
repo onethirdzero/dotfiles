@@ -116,6 +116,17 @@ if ! command -v vault >/dev/null; then
 {{- end }}
 fi
 
+# Ensure ansible.
+if ! command -v vault >/dev/null; then
+{{- if eq .chezmoi.os "darwin" }}
+    brew install ansible
+{{- else if (hasKey .chezmoi.osRelease "name") }}
+{{- if (eq .chezmoi.osRelease.name "Ubuntu") }}
+    apt install -y ansible
+{{- end }}
+{{- end }}
+fi
+
 # Stop GlobalProtect from auto starting on login and auto starting after quitting.
 # https://richddean.com/post/147155656349/stopautostartglobalprotectvpn#comment-5945202871
 launchctl disable gui/$(id -u)/com.paloaltonetworks.gp.pangpa
