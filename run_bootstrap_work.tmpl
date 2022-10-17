@@ -117,7 +117,7 @@ if ! command -v vault >/dev/null; then
 fi
 
 # Ensure ansible.
-if ! command -v vault >/dev/null; then
+if ! command -v ansible >/dev/null; then
 {{- if eq .chezmoi.os "darwin" }}
     brew install ansible
 {{- else if (hasKey .chezmoi.osRelease "name") }}
