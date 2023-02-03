@@ -1,6 +1,12 @@
 [user]
   email = {{ .email | quote }}
   name = {{ .name | quote }}
+{{- if .gitsshsigningkeypath }}
+  signingkey = {{ .gitsshsigningkeypath | quote }}
+
+[gpg]
+  format = ssh
+{{- end }}
 
 [alias]
   st = status
