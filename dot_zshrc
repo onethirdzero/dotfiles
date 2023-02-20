@@ -70,14 +70,16 @@ bindkey "^[^?" backward-delete-word
 # Preferred editor for local and remote sessions
 export EDITOR='nvim'
 
-# HISTFILE seems to already be set by some plugin.
-export HISTFILESIZE=1000000000
-export HISTSIZE=100000000000
+# HISTFILE seems to already be set by some ZSH plugin.
+export SAVEHIST=1000000000 # How many records are saved to file. 
+export HISTSIZE=1000000000 # How many records are loaded into memory. Should be at least $SAVEHIST.
 
 # Add commands to history immediately, so we can share it between shell sessions.
+# https://zsh.sourceforge.io/Doc/Release/Options.html#index-SHARE_005fHISTORY
 setopt share_history
 
 # Add timestamp to command history.
+# https://zsh.sourceforge.io/Doc/Release/Options.html#index-EXTENDED_005fHISTORY
 export HISTTIMEFORMAT="[%F %T] "
 setopt extended_history
 
