@@ -309,3 +309,10 @@ if ! command -v iperf >/dev/null; then
 {{- end }}
 {{- end }}
 fi
+
+# Ensure iproute2mac on Mac OS.
+if ! command -v ip >/dev/null; then
+{{- if eq .chezmoi.os "darwin" }}
+    brew install iproute2mac
+{{- end }}
+fi
