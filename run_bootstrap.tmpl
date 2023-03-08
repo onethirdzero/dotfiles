@@ -316,3 +316,10 @@ if ! command -v ip >/dev/null; then
     brew install iproute2mac
 {{- end }}
 fi
+
+# Ensure cheat.
+if ! command -v cheat >/dev/null; then
+{{- if eq .chezmoi.os "darwin" }}
+    brew install cheat
+{{- end }}
+fi
