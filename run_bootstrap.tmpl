@@ -317,9 +317,13 @@ if ! command -v ip >/dev/null; then
 {{- end }}
 fi
 
-# Ensure cheat.
-if ! command -v cheat >/dev/null; then
+# Ensure tldr.
+if ! command -v tldr >/dev/null; then
 {{- if eq .chezmoi.os "darwin" }}
-    brew install cheat
+    brew install isacikgoz/taps/tldr
+{{- else if (hasKey .chezmoi.osRelease "name") }}
+{{- if (eq .chezmoi.osRelease.name "Ubuntu") }}
+	go install github.com/isacikgoz/tldr/cmd/tldr@latest
+{{- end }}
 {{- end }}
 fi
