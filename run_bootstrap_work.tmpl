@@ -31,6 +31,17 @@ if ! command -v kubectl >/dev/null; then
 {{- end }}
 fi
 
+# Ensure kustomize.
+if ! command -v kustomize >/dev/null; then
+{{- if eq .chezmoi.os "darwin" }}
+    brew install kustomize
+{{- else if (hasKey .chezmoi.osRelease "name") }}
+{{- if (eq .chezmoi.osRelease.name "Ubuntu") }}
+    sudo apt install -y kustomize
+{{- end }}
+{{- end }}
+fi
+
 # Ensure pyenv.
 if ! command -v pyenv >/dev/null; then
 {{- if eq .chezmoi.os "darwin" }}
