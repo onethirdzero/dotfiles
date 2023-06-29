@@ -317,6 +317,13 @@ if ! command -v ip >/dev/null; then
 {{- end }}
 fi
 
+# Ensure Rectangle on Mac OS.
+if [ ! -d /Applications/Rectangle.app ]; then
+{{- if eq .chezmoi.os "darwin" }}
+    brew install --cask rectangle
+{{- end }}
+fi
+
 # Ensure tldr.
 if ! command -v tldr >/dev/null; then
 {{- if eq .chezmoi.os "darwin" }}
