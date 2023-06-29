@@ -7,6 +7,30 @@ set -euo pipefail
 {{- end }}
 {{- end }}
 
+# Ensure GNU tools on Mac OS.
+{{- if eq .chezmoi.os "darwin" }}
+# https://apple.stackexchange.com/a/284381
+if ! brew list gnu-tar; then
+    # https://gist.github.com/skyzyx/3438280b18e4f7c490db8a2a2ca0b9da
+	brew install autoconf bash binutils coreutils diffutils ed findutils flex gawk \
+    gnu-indent gnu-sed gnu-tar gnu-which gpatch grep gzip less m4 make \
+    watch wdiff wget zip
+
+	BREW_BIN="/usr/local/bin/brew"
+	if [ -f "/opt/homebrew/bin/brew" ]; then
+		BREW_BIN="/opt/homebrew/bin/brew"
+	fi
+
+	if type "${BREW_BIN}" &> /dev/null; then
+		export BREW_PREFIX="$("${BREW_BIN}" --prefix)"
+		for bindir in "${BREW_PREFIX}/opt/"*"/libexec/gnubin"; do export PATH=$bindir:$PATH; done
+		for bindir in "${BREW_PREFIX}/opt/"*"/bin"; do export PATH=$bindir:$PATH; done
+		for mandir in "${BREW_PREFIX}/opt/"*"/libexec/gnuman"; do export MANPATH=$mandir:$MANPATH; done
+		for mandir in "${BREW_PREFIX}/opt/"*"/share/man/man1"; do export MANPATH=$mandir:$MANPATH; done
+	fi
+fi
+{{- end }}
+
 # Ensure neovim.
 if ! command -v nvim >/dev/null; then
 {{- if eq .chezmoi.os "darwin" }}
@@ -257,13 +281,6 @@ if ! command -v fswatch >/dev/null; then
 {{- end }}
 {{- end }}
 fi
-
-# Ensure watch on Mac OS.
-{{- if eq .chezmoi.os "darwin" }}
-if ! command -v watch >/dev/null; then
-    brew install watch
-fi
-{{- end }}
 
 # Ensure dive.
 if ! command -v dive >/dev/null; then
