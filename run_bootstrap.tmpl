@@ -252,7 +252,10 @@ fi
 # Ensure Java.
 if ! command -v java >/dev/null; then
 {{- if eq .chezmoi.os "darwin" }}
-    brew install --cask temurin
+    # Specifically need Java 11 for UniFi Controller:
+	# https://community.ui.com/questions/unifi-is-damaged-and-cant-be-opened-7-3-76-Mac/21a158b5-6854-4d2e-8fe2-f944d02fdb48
+	# Should be fine for all other things since it's an LTS release.
+    brew install openjdk@11
 {{- else if (hasKey .chezmoi.osRelease "name") }}
 {{- if (eq .chezmoi.osRelease.name "Ubuntu") }}
     sudo apt install default-jdk
