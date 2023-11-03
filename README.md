@@ -11,3 +11,10 @@ Managed via [chezmoi](https://www.chezmoi.io/).
 cd dotfiles
 ./bootstrap.sh
 ```
+
+3. Download shell history:
+
+```console
+atuin login -u <USERNAME>
+atuin sync
+```

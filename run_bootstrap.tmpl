@@ -347,3 +347,26 @@ if ! command -v tldr >/dev/null; then
 {{- end }}
 {{- end }}
 fi
+
+# Ensure atuin.
+if ! command -v atuin >/dev/null; then
+{{- if eq .chezmoi.os "darwin" }}
+    brew install atuin
+{{- else if (hasKey .chezmoi.osRelease "name") }}
+{{- if (eq .chezmoi.osRelease.name "Ubuntu") }}
+    # Adapted from: https://raw.githubusercontent.com/atuinsh/atuin/main/install.sh
+    latest_release=$(curl -L -s -H 'Accept: application/json' https://github.com/atuinsh/atuin/releases/latest)
+    latest_release=$(echo "$latest_release" | sed -e 's/.*"tag_name":"\([^"]*\)".*/\1/')
+	artifact_url="https://github.com/atuinsh/atuin/releases/download/$latest_version/atuin_${latest_version//v/}_amd64.deb"
+	temp_deb="$(mktemp)".deb &&
+	curl -Lo "$temp_deb" "$artifact_url"
+	if command -v sudo &> /dev/null; then
+		sudo apt install "$temp_deb"
+	else
+		su -l -c "apt install '$temp_deb'"
+	fi
+	rm -f "$temp_deb"
+{{- end }}
+{{- end }}
+fi
+
