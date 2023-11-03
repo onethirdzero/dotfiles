@@ -4,7 +4,7 @@ source "${HOME}/.zgen/zgen.zsh"
 # If the init script doesn't exist.
 if ! zgen saved; then
   # Specify plugins and themes here.
-  zgen load romkatv/powerlevel10k powerlevel10k 
+  zgen load romkatv/powerlevel10k powerlevel10k
   zgen load zsh-users/zsh-autosuggestions
   zgen load zsh-users/zsh-syntax-highlighting
   zgen load zsh-users/zsh-history-substring-search
@@ -74,7 +74,7 @@ bindkey "^[^?" backward-delete-word
 export EDITOR='nvim'
 
 # HISTFILE seems to already be set by some ZSH plugin.
-export SAVEHIST=1000000000 # How many records are saved to file. 
+export SAVEHIST=1000000000 # How many records are saved to file.
 export HISTSIZE=1000000000 # How many records are loaded into memory. Should be at least $SAVEHIST.
 
 # Add commands to history immediately, so we can share it between shell sessions.
