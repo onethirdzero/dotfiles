@@ -231,13 +231,6 @@ if ! command -v jid >/dev/null; then
 {{- end }}
 fi
 
-# Ensure AltTab (Mac OS).
-{{- if eq .chezmoi.os "darwin" }}
-if [ ! -d /Applications/AltTab.app ]; then
-	brew install --cask alt-tab
-fi
-{{- end }}
-
 # Ensure shellcheck.
 if ! command -v shellcheck >/dev/null; then
 {{- if eq .chezmoi.os "darwin" }}
