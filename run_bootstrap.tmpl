@@ -370,3 +370,13 @@ if ! command -v atuin >/dev/null; then
 {{- end }}
 fi
 
+# Ensure ripgrep.
+if ! command -v rg >/dev/null; then
+{{- if eq .chezmoi.os "darwin" }}
+    brew install ripgrep
+{{- else if (hasKey .chezmoi.osRelease "name") }}
+{{- if (eq .chezmoi.osRelease.name "Ubuntu") }}
+    sudo apt-get install ripgrep
+{{- end }}
+{{- end }}
+fi
