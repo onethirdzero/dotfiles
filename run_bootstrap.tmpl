@@ -321,7 +321,7 @@ fi
 # Ensure Rust.
 if ! command -v cargo >/dev/null; then
 {{- if eq .chezmoi.os "darwin" }}
-    brew install cargo
+    brew install rust
 {{- else if (hasKey .chezmoi.osRelease "name") }}
 {{- if (eq .chezmoi.osRelease.name "Ubuntu") }}
 	sudo apt install -y rust
