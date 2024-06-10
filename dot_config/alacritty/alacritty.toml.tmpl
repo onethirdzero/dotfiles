@@ -1,0 +1,85 @@
+[window.dimensions]
+columns = 390
+lines = 90
+
+[font]
+size = 12.0
+
+[font.bold]
+family = "Inconsolata-dz for Powerline"
+style = "Bold"
+
+[font.bold_italic]
+family = "Inconsolata-dz for Powerline"
+style = "Bold Italic"
+
+[font.italic]
+family = "Inconsolata-dz for Powerline"
+style = "Italic"
+
+[font.normal]
+# Can't seem to find the 'Regular' style in my Mac OS installation of this
+# font, so I'll avoid the "not found" error by not specifying the style.
+family = "Inconsolata-dz for Powerline"
+
+{{ if eq .chezmoi.os "darwin" -}}
+# https://github.com/alacritty/alacritty/wiki/Keyboard-mappings#macos
+[[keyboard.bindings]]
+key = "Comma"
+mods = "Command"
+
+[keyboard.bindings.command]
+args = ["-c", "open ~/.config/alacritty/alacritty.yml"]
+program = "sh"
+
+[[keyboard.bindings]]
+action = "SpawnNewInstance"
+key = "N"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = " "
+key = "Space"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u0015"
+key = "Back"
+mods = "Command"
+
+[[keyboard.bindings]]
+# One word left.
+chars = "\u001Bb"
+key = "Left"
+mods = "Alt"
+
+[[keyboard.bindings]]
+# One word right.
+chars = "\u001Bf"
+key = "Right"
+mods = "Alt"
+
+[[keyboard.bindings]]
+# Home.
+chars = "\u001BOH"
+key = "Left"
+mods = "Command"
+
+[[keyboard.bindings]]
+# End.
+chars = "\u001BOF"
+key = "Right"
+mods = "Command"
+
+[[keyboard.bindings]]
+# https://github.com/alacritty/alacritty/issues/62#issuecomment-347552058
+# "Alt + ." on Linux. Aka "insert-last-word" on zsh.
+chars = "\u001B."
+key = "Period"
+mods = "Command"
+
+[[keyboard.bindings]]
+# https://github.com/alacritty/alacritty/issues/34#issuecomment-906943129
+action = "ToggleFullscreen"
+key = "F11"
+{{ end -}}
