@@ -395,9 +395,3 @@ if ! command -v rg >/dev/null; then
 {{- end }}
 fi
 
-# Ensure 1Password CLI on Mac OS.
-{{- if eq .chezmoi.os "darwin" }}
-if ! command -v op > /dev/null; then
-	brew install 1password-cli
-fi
-{{- end }}
