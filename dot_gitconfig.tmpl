@@ -1,8 +1,8 @@
 [user]
   email = {{ .email | quote }}
   name = {{ .name | quote }}
-{{- if .gitsshsigningkeypath }}
-  signingkey = {{ .gitsshsigningkeypath | quote }}
+{{- if .gitSSHSigningKeyPath }}
+  signingkey = {{ .gitSSHSigningKeyPath | quote }}
 
 [gpg]
   format = ssh

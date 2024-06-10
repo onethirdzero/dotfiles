@@ -7,8 +7,5 @@
     email = {{ $email | quote }}
     name = {{ $name | quote }}
 
-    # When accessing these variables in templates, use all lowercase. eg. workdotfilesrepo.
-    # https://www.chezmoi.io/user-guide/frequently-asked-questions/design/#why-does-chezmoi-convert-all-my-template-variables-to-lowercase
-
     workDotfilesRepo = {{ $workDotfilesRepo | quote }}
-	gitSSHSigningKeyPath = {{ $gitSSHSigningKeyPath | quote }}
+    gitSSHSigningKeyPath = {{ $gitSSHSigningKeyPath | quote }}

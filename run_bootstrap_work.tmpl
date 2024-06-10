@@ -1,4 +1,4 @@
-{{- if not (eq .workdotfilesrepo "") -}}
+{{- if not (eq .workDotfilesRepo "") -}}
 #!/bin/bash
 
 set -euo pipefail
@@ -6,7 +6,7 @@ set -euo pipefail
 WORK_DOTFILES_DEST="${HOME}/dotfiles"
 
 if [[ ! -d $WORK_DOTFILES_DEST ]]; then
-  git clone {{ .workdotfilesrepo }} $WORK_DOTFILES_DEST
+  git clone {{ .workDotfilesRepo }} $WORK_DOTFILES_DEST
 fi
 
 cat $WORK_DOTFILES_DEST/.zshrc >> ~/.zshrc
