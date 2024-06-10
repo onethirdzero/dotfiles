@@ -1,11 +1,11 @@
-{{- $email := promptString "email" -}}
-{{- $name := promptString "name" -}}
+{{- $email := promptString "main email for Git on this computer" -}}
+{{- $name := promptString "name for Git on this computer" -}}
 {{- $gitSSHSigningKeyPath := promptString "path to git SSH signing pub key" -}}
-{{- $workDotfilesRepo := promptString "work dotfiles repo" -}}
+{{- $workDotfilesRepoPath := promptString "path to work dotfiles repo" -}}
 
 [data]
     email = {{ $email | quote }}
     name = {{ $name | quote }}
 
-    workDotfilesRepo = {{ $workDotfilesRepo | quote }}
+    workDotfilesRepoPath = {{ $workDotfilesRepoPath | quote }}
     gitSSHSigningKeyPath = {{ $gitSSHSigningKeyPath | quote }}
