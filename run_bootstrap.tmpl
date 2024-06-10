@@ -62,6 +62,20 @@ if [ ! -d "/Applications/Scroll Reverser.app" ]; then
 fi
 {{- end }}
 
+{{- if eq .chezmoi.os "darwin" }}
+# Ensure Rectangle on Mac OS.
+if [ ! -d /Applications/Rectangle.app ]; then
+    brew install --cask rectangle
+fi
+{{- end }}
+
+{{- if eq .chezmoi.os "darwin" }}
+# Ensure Hidden Bar on Mac OS.
+if [ ! -d "/Applications/Hidden Bar.app" ]; then
+    brew install --cask hiddenbar
+fi
+{{- end }}
+
 # Ensure fzf.
 if ! command -v fzf >/dev/null; then
     git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
