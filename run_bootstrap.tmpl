@@ -48,6 +48,20 @@ if [ ! -f ~/.local/share/nvim/site/autoload/plug.vim ]; then
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
 
+{{- if eq .chezmoi.os "darwin" }}
+# Ensure Alacritty on Mac OS.
+if [ ! -d /Applications/Alacritty.app ]; then
+    brew install --cask alacritty
+fi
+{{- end }}
+
+{{- if eq .chezmoi.os "darwin" }}
+# Ensure Scroll Reverser on Mac OS.
+if [ ! -d "/Applications/Scroll Reverser.app" ]; then
+    brew install --cask scroll-reverser
+fi
+{{- end }}
+
 # Ensure fzf.
 if ! command -v fzf >/dev/null; then
     git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
