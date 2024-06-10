@@ -82,13 +82,13 @@ if ! command -v bat >/dev/null; then
 {{- end }}
 fi
 
-# Ensure exa.
-if ! command -v exa >/dev/null; then
+# Ensure lsd.
+if ! command -v lsd >/dev/null; then
 {{- if eq .chezmoi.os "darwin" }}
-    brew install exa
+    brew install lsd
 {{- else if (hasKey .chezmoi.osRelease "name") }}
 {{- if (eq .chezmoi.osRelease.name "Ubuntu") }}
-    sudo apt install exa
+    sudo apt install lsd
 {{- end }}
 {{- end }}
 fi
