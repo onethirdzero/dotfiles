@@ -156,4 +156,12 @@ launchctl disable gui/$(id -u)/com.paloaltonetworks.gp.pangpa
 launchctl disable gui/$(id -u)/com.paloaltonetworks.gp.pangps
 launchctl print-disabled gui/$(id -u)/
 
+# Ensure CMake.
+if ! command -v cmake >/dev/null; then
+{{- if eq .chezmoi.os "darwin" }}
+    brew install cmake
+    brew install cmake-docs
+{{- end }}
+fi
+
 {{- end }}
