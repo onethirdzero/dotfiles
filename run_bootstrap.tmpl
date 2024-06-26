@@ -423,3 +423,16 @@ if ! command -v rg >/dev/null; then
 {{- end }}
 fi
 
+# Ensure pyenv.
+if ! command -v pyenv >/dev/null; then
+{{- if eq .chezmoi.os "darwin" }}
+    brew install pyenv
+    brew install pyenv-virtualenv
+{{- else if (hasKey .chezmoi.osRelease "name") }}
+{{- if (eq .chezmoi.osRelease.name "Ubuntu") }}
+    git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+	git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv
+{{- end }}
+{{- end }}
+fi
+
