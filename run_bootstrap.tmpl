@@ -355,7 +355,7 @@ if ! command -v jc >/dev/null; then
 fi
 
 # Ensure iperf.
-if ! command -v iperf >/dev/null; then
+if ! command -v iperf3 >/dev/null; then
 {{- if eq .chezmoi.os "darwin" }}
     brew install iperf3
 {{- else if (hasKey .chezmoi.osRelease "name") }}
