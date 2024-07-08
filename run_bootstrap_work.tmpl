@@ -155,4 +155,10 @@ if ! command -v cmake >/dev/null; then
 {{- end }}
 fi
 
+if ! command -v gcloud >/dev/null; then
+{{- if eq .chezmoi.os "darwin" }}
+    brew install --cask google-cloud-sdk
+{{- end }}
+fi
+
 {{- end }}
