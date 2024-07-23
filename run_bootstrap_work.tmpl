@@ -168,4 +168,12 @@ if ! command -v gcloud >/dev/null; then
 {{- end }}
 fi
 
+# Ensure Microsoft Remote Desktop.
+# The App Store download requires adding a credit card to the work Apple ID.
+if [ ! -d "/Applications/Microsoft Remote Desktop.app" ]; then
+{{- if eq .chezmoi.os "darwin" }}
+    brew install --cask microsoft-remote-desktop
+{{- end }}
+fi
+
 {{- end }}
