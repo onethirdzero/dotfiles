@@ -177,3 +177,10 @@ if [ ! -d "/Applications/Microsoft Remote Desktop.app" ]; then
 fi
 
 {{- end }}
+
+# Ensure Background Music for Mac OS.
+if [ ! -d '/Applications/Background Music.app' ]; then
+{{- if eq .chezmoi.os "darwin" }}
+    brew install --cask background-music
+{{- end }}
+fi
