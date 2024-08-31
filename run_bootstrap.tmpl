@@ -379,6 +379,13 @@ if [ ! -d /Applications/Rectangle.app ]; then
 {{- end }}
 fi
 
+# Ensure KeyCastr on Mac OS.
+if [ ! -d /Applications/KeyCastr.app ]; then
+{{- if eq .chezmoi.os "darwin" }}
+    brew install --cask keycastr
+{{- end }}
+fi
+
 # Ensure tldr.
 if ! command -v tldr >/dev/null; then
 {{- if eq .chezmoi.os "darwin" }}
