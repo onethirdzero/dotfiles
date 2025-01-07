@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -uoe pipefail
+
 # https://stackoverflow.com/a/677212/10667555
 requires () {
 	command -v "${1}" >/dev/null 2>&1 || { echo >&2 "Requires \"${1}\" but it's not installed. Aborting."; exit 1; }
@@ -7,14 +9,19 @@ requires () {
 
 requires git
 
+# Ensure Homebrew on Mac OS.
+if uname -va | grep "Darwin"; then
+	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+
 # Ensure chezmoi.
 if ! command -v chezmoi >/dev/null; then
-	sh -c "$(wget -qO- chezmoi.io/get)" || sh -c "$(curl -fsLS chezmoi.io/get)"
+	sh -c "$(curl -fsLS get.chezmoi.io)" || sh -c "$(wget -qO- get.chezmoi.io)"
 	mv ./bin/chezmoi /usr/local/bin/
-
-	# Set up dotfiles.
-	chezmoi init --apply --verbose git@github.com:onethirdzero/dotfiles.git
 fi
+
+# Set up dotfiles.
+chezmoi init --apply --verbose git@github.com:onethirdzero/dotfiles.git
 
 # Ensure zgen.
 if [ ! -d "${HOME}/.zgen" ]; then
