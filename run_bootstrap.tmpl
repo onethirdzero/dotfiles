@@ -49,6 +49,13 @@ if [ ! -f ~/.local/share/nvim/site/autoload/plug.vim ]; then
 fi
 
 {{- if eq .chezmoi.os "darwin" }}
+# Ensure Inconsolata-dz for Powerline font on Mac OS.
+if [ ! -f "/Users/jsiaw/Library/Fonts/Inconsolata-dz for Powerline.otf" ]; then
+    brew install --cask font-inconsolata-dz-for-powerline
+fi
+{{- end }}
+
+{{- if eq .chezmoi.os "darwin" }}
 # Ensure Alacritty on Mac OS.
 if [ ! -d /Applications/Alacritty.app ]; then
     brew install --cask alacritty
