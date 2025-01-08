@@ -22,14 +22,23 @@ cat $WORK_DOTFILES_DEST/.pip/pip.conf >> ~/.pip/pip.conf
 {{- end }}
 {{- end }}
 
-# Ensure kubectl and kubectx.
+# Ensure kubectl.
 if ! command -v kubectl >/dev/null; then
 {{- if eq .chezmoi.os "darwin" }}
     brew install kubectl
-    brew install kubectx
 {{- else if (hasKey .chezmoi.osRelease "name") }}
 {{- if (eq .chezmoi.osRelease.name "Ubuntu") }}
     sudo apt install -y kubectl
+{{- end }}
+{{- end }}
+fi
+
+# Ensure kubectx.
+if ! command -v kubectx >/dev/null; then
+{{- if eq .chezmoi.os "darwin" }}
+    brew install kubectx
+{{- else if (hasKey .chezmoi.osRelease "name") }}
+{{- if (eq .chezmoi.osRelease.name "Ubuntu") }}
 	sudo apt install -y kubectx
 {{- end }}
 {{- end }}
