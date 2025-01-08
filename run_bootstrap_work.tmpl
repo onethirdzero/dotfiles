@@ -200,3 +200,8 @@ if [ ! -d /Applications/Tailscale.app ]; then
     brew install --cask tailscale
 {{- end }}
 fi
+
+# Ensure One Monokai theme for Xcode.
+if [ ! -f ~/Library/Developer/Xcode/UserData/FontAndColorThemes/OneMonokai.xccolortheme ]; then
+	/bin/bash <(curl -s https://raw.githubusercontent.com/cpea2506/Xcode-OneMonokai/main/OneMonokai/install.sh)
+fi
