@@ -11,10 +11,12 @@ fi
 
 cat $WORK_DOTFILES_DEST/.zshrc >> ~/.zshrc
 cat $WORK_DOTFILES_DEST/.gitconfig >> ~/.gitconfig
+
 if [[ ! -d ~/.pip ]]; then
   mkdir -p ~/.pip
+  touch ~/.pip/pip.conf
 fi
-cat $WORK_DOTFILES_DEST/.pip/pip.conf >> ~/.pip/pip.conf
+cat $WORK_DOTFILES_DEST/.pip/pip.conf > ~/.pip/pip.conf
 
 {{- if (hasKey .chezmoi.osRelease "name") }}
 {{- if (eq .chezmoi.osRelease.name "Ubuntu") }}
