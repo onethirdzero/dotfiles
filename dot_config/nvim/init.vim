@@ -1,6 +1,8 @@
 syntax on
 
-" # Plugins.
+" Plugins.
+" To install plugins for the first time, run this in Vim: PlugInstall
+" https://github.com/junegunn/vim-plug#commands
 call plug#begin()
 
 Plug 'gruvbox-community/gruvbox'
