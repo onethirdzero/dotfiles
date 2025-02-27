@@ -17,7 +17,8 @@
   l = log --graph --all --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an %C(auto)%G?>%Creset' --abbrev-commit --date=relative
 
 [push]
-  default = current
+  default = simple
+  autoSetupRemote = true
 
 [color]
   status = auto
@@ -32,6 +33,46 @@
   autosquash = true
   autostash = true
 
+  # Also update any branch refs if there were branches branched off your current branch. Saves keystrokes.
+  updaterefs = true
+
 [rerere]
   enabled = true
+
+  # Apply saved resolutions the next time Git sees them. Annoying that this isn't the default.
+  autoupdate = true
+
+[column]
+  ui = auto
+
+[branch]
+  # Most recently changed first.
+  sort = -committerdate
+
+[tag]
+  sort = version:refname
+
+[init]
+  defaultBranch = main
+
+[diff]
+  # Make it easier to see when lines move.
+  algorithm = histogram
+
+  colorMoved = plain
+  mnemonicPrefix = true
+  renames = true
+
+[fetch]
+  prune = true
+  pruneTags = true
+  all = true
+
+[help]
+  # Suggest autocorrects, so we can run them right away, instead of retyping.
+  autocorrect = prompt
+
+[commit]
+  # Add diff to commit comments, for extra clarity.
+  verbose = true
 
