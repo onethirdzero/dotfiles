@@ -207,3 +207,18 @@ fi
 if [ ! -f ~/Library/Developer/Xcode/UserData/FontAndColorThemes/OneMonokai.xccolortheme ]; then
 	/bin/bash <(curl -s https://raw.githubusercontent.com/cpea2506/Xcode-OneMonokai/main/OneMonokai/install.sh)
 fi
+
+# Ensure tfenv.
+if ! command -v tfenv >/dev/null; then
+{{- if eq .chezmoi.os "darwin" }}
+    brew install tfenv
+{{- end }}
+fi
+
+# Ensure Argo Rollouts kubectl plugin.
+if [[ "$(kubectl argo rollouts 2>&1)" == *'unknown command "argo"'* ]]; then
+{{- if eq .chezmoi.os "darwin" }}
+    brew install argoproj/tap/kubectl-argo-rollouts
+{{- end }}
+fi
+
