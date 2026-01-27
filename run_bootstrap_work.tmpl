@@ -222,3 +222,10 @@ if [[ "$(kubectl argo rollouts 2>&1)" == *'unknown command "argo"'* ]]; then
 {{- end }}
 fi
 
+
+# Ensure 1Password on Mac OS.
+if [ ! -d /Applications/1Password.app ]; then
+{{- if eq .chezmoi.os "darwin" }}
+    brew install --cask 1password
+{{- end }}
+fi
