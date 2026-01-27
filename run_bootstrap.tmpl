@@ -104,6 +104,13 @@ if [ ! -d "/Applications/Firefox.app" ]; then
 fi
 {{- end }}
 
+{{- if eq .chezmoi.os "darwin" }}
+# Ensure Brave on Mac OS.
+if [ ! -d "/Applications/Brave.app" ]; then
+	brew install --cask brave-browser
+fi
+{{- end }}
+
 # Ensure fzf.
 if ! command -v fzf >/dev/null; then
     git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
