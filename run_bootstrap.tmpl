@@ -407,6 +407,13 @@ if [ ! -d /Applications/KeyCastr.app ]; then
 {{- end }}
 fi
 
+# Ensure BetterAudio on Mac OS.
+if [ ! -d /Applications/BetterAudio.app ]; then
+{{- if eq .chezmoi.os "darwin" }}
+	brew install rokartur/betteraudio/betteraudio
+{{- end }}
+fi
+
 # Ensure tldr.
 if ! command -v tldr >/dev/null; then
 {{- if eq .chezmoi.os "darwin" }}
