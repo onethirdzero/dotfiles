@@ -98,6 +98,7 @@ alias cz="chezmoi"
 alias vim="nvim"
 alias less="bat"
 alias ls="lsd"
+alias diff="delta"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
