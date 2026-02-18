@@ -46,17 +46,6 @@ if ! command -v kubectx >/dev/null; then
 {{- end }}
 fi
 
-# Ensure kustomize.
-if ! command -v kustomize >/dev/null; then
-{{- if eq .chezmoi.os "darwin" }}
-    brew install kustomize
-{{- else if (hasKey .chezmoi.osRelease "name") }}
-{{- if (eq .chezmoi.osRelease.name "Ubuntu") }}
-    sudo apt install -y kustomize
-{{- end }}
-{{- end }}
-fi
-
 # Ensure plantuml.
 if ! command -v plantuml >/dev/null; then
 {{- if eq .chezmoi.os "darwin" }}
@@ -65,28 +54,6 @@ if ! command -v plantuml >/dev/null; then
 {{- else if (hasKey .chezmoi.osRelease "name") }}
 {{- if (eq .chezmoi.osRelease.name "Ubuntu") }}
     sudo apt install plantuml -y
-{{- end }}
-{{- end }}
-fi
-
-# Ensure jfrog.
-if ! command -v jfrog >/dev/null; then
-{{- if eq .chezmoi.os "darwin" }}
-    brew install jfrog-cli
-{{- else if (hasKey .chezmoi.osRelease "name") }}
-{{- if (eq .chezmoi.osRelease.name "Ubuntu") }}
-    sudo apt install jfrog-cli -y
-{{- end }}
-{{- end }}
-fi
-
-# Ensure kind.
-if ! command -v kind >/dev/null; then
-{{- if eq .chezmoi.os "darwin" }}
-    brew install kind
-{{- else if (hasKey .chezmoi.osRelease "name") }}
-{{- if (eq .chezmoi.osRelease.name "Ubuntu") }}
-    sudo apt install kind -y
 {{- end }}
 {{- end }}
 fi
@@ -125,29 +92,6 @@ if ! command -v vault >/dev/null; then
 	gpg --no-default-keyring --keyring /usr/share/keyrings/hashicorp-archive-keyring.gpg --fingerprint
 	echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
     apt update && apt install -y vault
-{{- end }}
-{{- end }}
-fi
-
-# Ensure ansible.
-if ! command -v ansible >/dev/null; then
-{{- if eq .chezmoi.os "darwin" }}
-    brew install ansible
-{{- else if (hasKey .chezmoi.osRelease "name") }}
-{{- if (eq .chezmoi.osRelease.name "Ubuntu") }}
-    apt install -y ansible
-{{- end }}
-{{- end }}
-fi
-
-# Ensure K8s stern:
-# https://github.com/stern/stern
-if ! command -v stern >/dev/null; then
-{{- if eq .chezmoi.os "darwin" }}
-    brew install stern
-{{- else if (hasKey .chezmoi.osRelease "name") }}
-{{- if (eq .chezmoi.osRelease.name "Ubuntu") }}
-	go install github.com/stern/stern@latest
 {{- end }}
 {{- end }}
 fi
