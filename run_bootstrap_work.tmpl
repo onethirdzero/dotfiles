@@ -132,8 +132,6 @@ if [ ! -d "/Applications/Microsoft Remote Desktop.app" ]; then
 {{- end }}
 fi
 
-{{- end }}
-
 # Ensure Tailscale for Mac OS.
 if [ ! -d /Applications/Tailscale.app ]; then
 {{- if eq .chezmoi.os "darwin" }}
@@ -166,3 +164,6 @@ if [ ! -d /Applications/1Password.app ]; then
     brew install --cask 1password
 {{- end }}
 fi
+
+# Keep this at EOF.
+{{- end }}
