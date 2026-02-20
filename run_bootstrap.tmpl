@@ -63,6 +63,13 @@ fi
 {{- end }}
 
 {{- if eq .chezmoi.os "darwin" }}
+# Ensure Ghostty on Mac OS.
+if [ ! -d /Applications/Ghostty.app ]; then
+    brew install --cask ghostty
+fi
+{{- end }}
+
+{{- if eq .chezmoi.os "darwin" }}
 # Ensure Scroll Reverser on Mac OS.
 if [ ! -d "/Applications/Scroll Reverser.app" ]; then
     brew install --cask scroll-reverser

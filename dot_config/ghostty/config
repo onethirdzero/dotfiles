@@ -1,0 +1,3 @@
+keybind = super+arrow_left=esc:OH
+keybind = super+arrow_right=esc:OF
+keybind = super+.=esc:.
