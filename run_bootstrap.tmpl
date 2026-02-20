@@ -56,13 +56,6 @@ fi
 {{- end }}
 
 {{- if eq .chezmoi.os "darwin" }}
-# Ensure Alacritty on Mac OS.
-if [ ! -d /Applications/Alacritty.app ]; then
-    brew install --cask alacritty
-fi
-{{- end }}
-
-{{- if eq .chezmoi.os "darwin" }}
 # Ensure Ghostty on Mac OS.
 if [ ! -d /Applications/Ghostty.app ]; then
     brew install --cask ghostty
