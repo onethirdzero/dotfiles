@@ -1,4 +1,3 @@
-nnoremap <CS-e> :NERDTreeToggle<CR>
 nnoremap <C-p> :Files<CR>
 
 " Make sure SPACE isn't already mapped to something.

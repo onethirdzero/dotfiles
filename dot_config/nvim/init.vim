@@ -13,8 +13,6 @@ Plug 'vim-utils/vim-man'
 " Use the fzf package installed by the host package manager.
 Plug '~/.fzf'
 Plug 'junegunn/fzf.vim'
-" Side bar file explorer.
-Plug 'preservim/nerdtree'
 " Smooth scrolling.
 Plug 'psliwka/vim-smoothie'
 " Golang support.
