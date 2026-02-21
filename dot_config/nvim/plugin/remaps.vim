@@ -1,3 +1,4 @@
+" Relies on fzf.vim.
 nnoremap <C-p> :Files<CR>
 
 " Make sure SPACE isn't already mapped to something.
