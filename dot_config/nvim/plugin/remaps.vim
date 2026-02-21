@@ -9,4 +9,5 @@ let mapleader = " "
 map <C-n> :cnext<CR>
 map <C-m> :cprevious<CR>
 nnoremap <leader>q :cclose<CR>
+nnoremap <leader>co :copen<CR>
 
