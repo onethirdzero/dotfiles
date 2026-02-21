@@ -478,7 +478,7 @@ if ! command -v yazi >/dev/null; then
 {{- end }}
 
 # Ensure zgen.
-if ! command -v zgen >/dev/null; then
+if [ ! -d "${HOME}/.zgen" ]; then
 	git clone https://github.com/tarjoilija/zgen.git "${HOME}/.zgen"
 	source "${HOME}/.zgen/zgen.zsh"
 fi
