@@ -165,5 +165,12 @@ if [ ! -d /Applications/1Password.app ]; then
 {{- end }}
 fi
 
+# Ensure uvx on Mac OS, for interacting with MCP servers.
+if ! command -v uv >/dev/null; then
+{{- if eq .chezmoi.os "darwin" }}
+    brew install uv
+{{- end }}
+fi
+
 # Keep this at EOF.
 {{- end }}
