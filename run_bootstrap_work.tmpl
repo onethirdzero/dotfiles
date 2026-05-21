@@ -110,10 +110,10 @@ if ! command -v cmake >/dev/null; then
 {{- end }}
 fi
 
-# Ensure Postman.
-if [ ! -d /Applications/Postman.app ]; then
+# Ensure Bruno.
+if [ ! -d /Applications/Bruno.app ]; then
 {{- if eq .chezmoi.os "darwin" }}
-    brew install --cask postman
+    brew install --cask bruno
 {{- end }}
 fi
 
