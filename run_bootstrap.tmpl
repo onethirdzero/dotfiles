@@ -209,14 +209,6 @@ if ! command -v go >/dev/null; then
 {{- end }}
 fi
 
-# Ensure timer app (Mac OS).
-{{- if eq .chezmoi.os "darwin" }}
-if [ ! -d /Applications/Timer.app ]; then
-	brew install --cask michaelvillar-timer
-fi
-{{- end }}
-
-
 # Ensure Visual Studio Code.
 {{- if eq .chezmoi.os "darwin" }}
 if [ ! -d "/Applications/Visual Studio Code.app" ]; then
