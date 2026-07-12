@@ -469,6 +469,13 @@ if ! command -v yazi >/dev/null; then
     brew install yazi
 {{- end }}
 
+# Ensure uv.
+if ! command -v uv >/dev/null; then
+{{- if eq .chezmoi.os "darwin" }}
+    brew install uv
+{{- end }}
+fi
+
 # Ensure zgen.
 if [ ! -d "${HOME}/.zgen" ]; then
 	git clone https://github.com/tarjoilija/zgen.git "${HOME}/.zgen"
