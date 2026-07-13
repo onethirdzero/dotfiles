@@ -468,6 +468,7 @@ if ! command -v yazi >/dev/null; then
 {{- if eq .chezmoi.os "darwin" }}
     brew install yazi
 {{- end }}
+fi
 
 # Ensure uv.
 if ! command -v uv >/dev/null; then
