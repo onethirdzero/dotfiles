@@ -25,7 +25,7 @@ fi
 # Ensure chezmoi.
 if ! command -v chezmoi >/dev/null; then
 	sh -c "$(curl -fsLS get.chezmoi.io)" || sh -c "$(wget -qO- get.chezmoi.io)"
-	mv ./bin/chezmoi /usr/local/bin/
+	sudo mv ./bin/chezmoi /usr/local/bin/
 fi
 
 # Set up dotfiles.
