@@ -7,7 +7,15 @@ requires () {
 	command -v "${1}" >/dev/null 2>&1 || { echo >&2 "Requires \"${1}\" but it's not installed. Aborting."; exit 1; }
 }
 
-requires git
+# Ensure Git on Mac OS.
+if uname -va | grep "Darwin"; then
+	if ! command -v git >/dev/null; then
+		xcode-select --install
+	fi
+else
+	requires git
+fi
+
 
 # Ensure Homebrew on Mac OS.
 if uname -va | grep "Darwin"; then
