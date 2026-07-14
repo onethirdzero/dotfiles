@@ -56,5 +56,12 @@ if ! command -v aws >/dev/null; then
 {{- end }}
 fi
 
+# Ensure Protobuf compiler.
+if ! command -v protoc >/dev/null; then
+{{- if eq .chezmoi.os "darwin" }}
+    brew install protobuf
+{{- end }}
+fi
+
 # Keep this at EOF.
 {{- end }}
