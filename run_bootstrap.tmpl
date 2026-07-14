@@ -256,7 +256,7 @@ fi
 # Ensure jqp.
 if ! command -v jqp >/dev/null; then
 {{- if eq .chezmoi.os "darwin" }}
-    brew install noahgorstein/tap/jqp
+    brew install jqp
 {{- else if (hasKey .chezmoi.osRelease "name") }}
 {{- if (eq .chezmoi.osRelease.name "Ubuntu") }}
     sudo apt install jqp
