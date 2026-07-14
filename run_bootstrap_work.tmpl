@@ -40,5 +40,12 @@ if ! command -v kubectx >/dev/null; then
 {{- end }}
 fi
 
+# Ensure kind.
+if ! command -v kind >/dev/null; then
+{{- if eq .chezmoi.os "darwin" }}
+    brew install kind
+{{- end }}
+fi
+
 # Keep this at EOF.
 {{- end }}
