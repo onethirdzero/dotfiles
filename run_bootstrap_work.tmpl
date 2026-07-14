@@ -1,16 +1,18 @@
-{{- if not (eq .workDotfilesRepoPath "") -}}
+{{- if .enableWorkDotfiles -}}
 #!/bin/bash
 
 set -euo pipefail
 
+{{- if not (eq .extraWorkDotfilesRepoPath "") -}}
 WORK_DOTFILES_DEST="${HOME}/dotfiles"
 
 if [[ ! -d $WORK_DOTFILES_DEST ]]; then
-  git clone {{ .workDotfilesRepoPath }} $WORK_DOTFILES_DEST
+  git clone {{ .extraWorkDotfilesRepoPath }} $WORK_DOTFILES_DEST
 fi
 
 cat $WORK_DOTFILES_DEST/.zshrc >> ~/.zshrc
 cat $WORK_DOTFILES_DEST/.gitconfig >> ~/.gitconfig
+{{- end }}
 
 {{- if (hasKey .chezmoi.osRelease "name") }}
 {{- if (eq .chezmoi.osRelease.name "Ubuntu") }}
