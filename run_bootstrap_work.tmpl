@@ -49,5 +49,12 @@ if ! command -v kind >/dev/null; then
 {{- end }}
 fi
 
+# Ensure AWS CLI.
+if ! command -v aws >/dev/null; then
+{{- if eq .chezmoi.os "darwin" }}
+    brew install awscli
+{{- end }}
+fi
+
 # Keep this at EOF.
 {{- end }}
