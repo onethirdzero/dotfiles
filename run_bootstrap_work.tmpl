@@ -3,15 +3,27 @@
 
 set -euo pipefail
 
-{{- if not (eq .extraWorkDotfilesRepoPath "") -}}
-WORK_DOTFILES_DEST="${HOME}/dotfiles"
+{{ if not (eq .extraWorkDotfilesRepoPath "") }}
 
-if [[ ! -d $WORK_DOTFILES_DEST ]]; then
-  git clone {{ .extraWorkDotfilesRepoPath }} $WORK_DOTFILES_DEST
+if [[ {{ .extraWorkDotfilesRepoPath }} == *.git ]]; then
+    WORK_DOTFILES_DEST="${HOME}/dotfiles"
+
+    if [[ ! -d $WORK_DOTFILES_DEST ]]; then
+        git clone {{ .extraWorkDotfilesRepoPath }} $WORK_DOTFILES_DEST
+    fi
+else
+    WORK_DOTFILES_DEST="{{ .extraWorkDotfilesRepoPath }}"
 fi
 
-cat $WORK_DOTFILES_DEST/.zshrc >> ~/.zshrc
-cat $WORK_DOTFILES_DEST/.gitconfig >> ~/.gitconfig
+if [[ -f $WORK_DOTFILES_DEST/.zshrc ]]; then
+    echo "# From work dotfiles.\n" >> ~/.zshrc
+    cat $WORK_DOTFILES_DEST/.zshrc >> ~/.zshrc
+fi
+
+if [[ -f $WORK_DOTFILES_DEST/.gitconfig ]]; then
+    echo "# From work dotfiles.\n" >> ~/.gitconfig
+    cat $WORK_DOTFILES_DEST/.gitconfig >> ~/.gitconfig
+fi
 {{- end }}
 
 {{- if (hasKey .chezmoi.osRelease "name") }}

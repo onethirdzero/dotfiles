@@ -2,7 +2,7 @@
 {{- $name := promptString "name for Git on this computer" -}}
 {{- $gitSSHSigningKeyPath := promptString "path to git SSH signing pub key" -}}
 {{- $enableWorkDotfiles := promptBool "enable work dotfiles?" false -}}
-{{- $extraWorkDotfilesRepoPath := promptString "path to an additional work dotfiles repo, for sensitive data that should not be committed to this repo (optional)" -}}
+{{- $extraWorkDotfilesRepoPath := promptString "local path or SSH URL to an additional work dotfiles repo, for sensitive data that should not be committed to this repo (optional)" -}}
 
 [data]
     email = {{ $email | quote }}
