@@ -75,5 +75,12 @@ if ! command -v protoc >/dev/null; then
 {{- end }}
 fi
 
+# Ensure Helm.
+if ! command -v helm >/dev/null; then
+{{- if eq .chezmoi.os "darwin" }}
+    brew install helm
+{{- end }}
+fi
+
 # Keep this at EOF.
 {{- end }}
