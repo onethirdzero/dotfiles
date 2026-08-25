@@ -19,7 +19,9 @@ fi
 
 # Ensure Homebrew on Mac OS.
 if uname -va | grep "Darwin"; then
-	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+	if ! command -v brew >/dev/null; then
+		/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+	fi
 fi
 
 # Ensure chezmoi.
