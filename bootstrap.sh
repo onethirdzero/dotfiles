@@ -30,9 +30,6 @@ if ! command -v chezmoi >/dev/null; then
 	sudo mv ./bin/chezmoi /usr/local/bin/
 fi
 
-# Set up dotfiles.
-chezmoi init --apply --verbose git@github.com:onethirdzero/dotfiles.git
-
 # Ensure zgen.
 if [ ! -d "${HOME}/.zgen" ]; then
 	git clone https://github.com/tarjoilija/zgen.git "${HOME}/.zgen"
@@ -50,3 +47,5 @@ if [ -n "${ZSH_VERSION}" ]; then
 	zsh
 fi
 
+# Set up dotfiles.
+chezmoi init --apply --verbose git@github.com:onethirdzero/dotfiles.git
