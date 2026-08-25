@@ -16,12 +16,12 @@ else
 fi
 
 if [[ -f $WORK_DOTFILES_DEST/.zshrc ]]; then
-    echo "# From work dotfiles.\n" >> ~/.zshrc
+    echo "\n# From work dotfiles.\n" >> ~/.zshrc
     cat $WORK_DOTFILES_DEST/.zshrc >> ~/.zshrc
 fi
 
 if [[ -f $WORK_DOTFILES_DEST/.gitconfig ]]; then
-    echo "# From work dotfiles.\n" >> ~/.gitconfig
+    echo "\n# From work dotfiles.\n" >> ~/.gitconfig
     cat $WORK_DOTFILES_DEST/.gitconfig >> ~/.gitconfig
 fi
 {{- end }}
