@@ -35,17 +35,15 @@ fi
 if ! command -v nvim >/dev/null; then
 {{- if eq .chezmoi.os "darwin" }}
     brew install neovim
+
+    # Also ensure LazyVim.
+    git clone https://github.com/LazyVim/starter ~/.config/nvim
+    rm -rf ~/.config/nvim/.git
 {{- else if (hasKey .chezmoi.osRelease "name") }}
 {{- if (eq .chezmoi.osRelease.name "Ubuntu") }}
     sudo apt install neovim
 {{- end }}
 {{- end }}
-fi
-
-# Ensure vim-plug.
-if [ ! -f ~/.local/share/nvim/site/autoload/plug.vim ]; then
-    curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
 
 {{- if eq .chezmoi.os "darwin" }}
