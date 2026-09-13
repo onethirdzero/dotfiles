@@ -49,9 +49,9 @@ if [ ! -f ~/.local/share/nvim/site/autoload/plug.vim ]; then
 fi
 
 {{- if eq .chezmoi.os "darwin" }}
-# Ensure Inconsolata-dz for Powerline font on Mac OS.
-if [ ! -f "${HOME}/Library/Fonts/Inconsolata-dz for Powerline.otf" ]; then
-    brew install --cask font-inconsolata-dz-for-powerline
+# Ensure Inconsolate Nerd Font on Mac OS.
+if ! brew list font-inconsolata-nerd-font >/dev/null; then
+    brew install --cask font-inconsolata-nerd-font
 fi
 {{- end }}
 
