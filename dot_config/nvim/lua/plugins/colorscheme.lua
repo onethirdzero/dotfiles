@@ -1,10 +1,9 @@
 return {
-  { "ellisonleao/gruvbox.nvim" },
-
+  { "loctvl842/monokai-pro.nvim" },
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "gruvbox",
+      colorscheme = "monokai-pro-machine",
     },
   },
 }
