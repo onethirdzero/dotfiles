@@ -39,6 +39,9 @@ if ! command -v nvim >/dev/null; then
     # Also ensure LazyVim.
     git clone https://github.com/LazyVim/starter ~/.config/nvim
     rm -rf ~/.config/nvim/.git
+
+    # Also ensure LazyGit, mainly for switching Git worktrees easily in Neovim.
+    brew install lazygit
 {{- else if (hasKey .chezmoi.osRelease "name") }}
 {{- if (eq .chezmoi.osRelease.name "Ubuntu") }}
     sudo apt install neovim
