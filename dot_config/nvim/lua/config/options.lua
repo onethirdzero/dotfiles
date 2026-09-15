@@ -5,3 +5,6 @@
 -- Word wrap.
 vim.opt.wrap = true
 vim.opt.textwidth = 120
+
+-- Mouse scroll speed.
+vim.opt.mousescroll = "ver:1,hor:0"
