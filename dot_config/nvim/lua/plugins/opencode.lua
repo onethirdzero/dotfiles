@@ -4,7 +4,13 @@ return {
   config = function()
     ---@type opencode.Opts
     vim.g.opencode_opts = {
-      -- Your configuration, if any; goto definition on the type for details
+      server = {
+        start = function()
+          -- opencode.vim connects to an existing OpenCode server if it's already running.
+          -- Otherwise, start one in a separate pane.
+          vim.fn.jobstart({ "tmux", "split-window", "-h", "-c", vim.fn.getcwd(), "opencode --port" }, { detach = true })
+        end,
+      },
     }
 
     -- Recommended/example keymaps
