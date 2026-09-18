@@ -472,3 +472,10 @@ if [ ! -d "${HOME}/.zgen" ]; then
 	git clone https://github.com/tarjoilija/zgen.git "${HOME}/.zgen"
 	source "${HOME}/.zgen/zgen.zsh"
 fi
+
+{{- if eq .chezmoi.os "darwin" }}
+# Ensure uv.
+if ! command -v opencode >/dev/null; then
+    brew install opencode
+{{- end }}
+fi

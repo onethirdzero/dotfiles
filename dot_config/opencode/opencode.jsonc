@@ -1,0 +1,34 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "Jira": {
+      "type": "remote",
+      "url": "https://mcp.atlassian.com/v1/mcp/authv2",
+      "oauth": {}
+    }
+  },
+  "plugin": ["@mohak34/opencode-notifier@latest"],
+  "permission": {
+    "external_directory": {
+      "~/dev/project-neptune/**": "allow",
+      "~/.kube/configs/**": "allow",
+      "~/go/pkg/**": "allow",
+      "/opt/homebrew/bin/**": "allow",
+      "/usr/local/bin/**": "allow",
+      "~/.config/**": "allow"
+    },
+    "read": {
+      "~/go/pkg/**": "allow",
+      "/opt/homebrew/bin/**": "allow",
+      "/usr/local/bin/**": "allow",
+      "~/.config/**": "allow"
+    },
+    "edit": {
+      "*": "allow",
+      "~/go/pkg/**": "deny",
+      "/opt/homebrew/bin/**": "deny",
+      "/usr/local/bin/**": "deny",
+      "~/.config/**": "deny"
+    }
+  }
+}
