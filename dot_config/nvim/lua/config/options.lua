@@ -8,3 +8,6 @@ vim.opt.textwidth = 120
 
 -- Mouse scroll speed.
 vim.opt.mousescroll = "ver:1,hor:0"
+
+-- Primarily to avoid hiding Markdown syntax, so that navigation isn't so confusing.
+vim.opt.conceallevel = 0
