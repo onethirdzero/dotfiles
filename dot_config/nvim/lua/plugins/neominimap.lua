@@ -24,6 +24,9 @@ return {
         minimap_width = 20,
         fix_width = true,
         direction = "right",
+
+        -- Avoid having to close a Vim window twice when editing a Git commit message.
+        close_if_last_window = true,
       },
 
       diagnostic = {
