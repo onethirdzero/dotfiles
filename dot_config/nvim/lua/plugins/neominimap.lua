@@ -15,15 +15,26 @@ return {
       current_line_position = "percent",
 
       -- Compress the minimap vertically.
-      y_multiplier = 2.5,
+      y_multiplier = 2,
 
       -- Update the minimap less frequently (in ms).
-      delay = 5000,
+      delay = 3000,
 
       split = {
         minimap_width = 20,
         fix_width = true,
         direction = "right",
+      },
+
+      diagnostic = {
+        -- Make diagnostic issues less glaring.
+        mode = "sign",
+      },
+
+      git = {
+        -- Make Git changes more obvious.
+        mode = "line",
+        priority = 250,
       },
     }
   end,
