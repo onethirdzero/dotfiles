@@ -16,19 +16,22 @@
       "/opt/homebrew/bin/**": "allow",
       "/usr/local/bin/**": "allow",
       "~/.config/**": "allow"
+      "~/.local/share/**": "allow"
     },
     "read": {
       "~/go/pkg/**": "allow",
       "/opt/homebrew/bin/**": "allow",
       "/usr/local/bin/**": "allow",
-      "~/.config/**": "allow"
+      "~/.config/**": "allow",
+      "~/.local/share/**": "allow"
     },
     "edit": {
       "*": "allow",
       "~/go/pkg/**": "deny",
       "/opt/homebrew/bin/**": "deny",
       "/usr/local/bin/**": "deny",
-      "~/.config/**": "deny"
+      "~/.config/**": "deny",
+      "~/.local/share/**": "deny"
     }
   }
 }
