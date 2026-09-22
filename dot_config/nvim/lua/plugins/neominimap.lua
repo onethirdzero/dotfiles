@@ -41,4 +41,11 @@ return {
       },
     }
   end,
+
+  -- Make 'lines' mode less glaring.
+  config = function()
+    vim.api.nvim_set_hl(0, "NeominimapGitAddLine", { bg = "#47765e" })
+    vim.api.nvim_set_hl(0, "NeominimapGitChangeLine", { bg = "#7f7150" })
+    vim.api.nvim_set_hl(0, "NeominimapGitDeleteLine", { bg = "#7f545c" })
+  end,
 }
