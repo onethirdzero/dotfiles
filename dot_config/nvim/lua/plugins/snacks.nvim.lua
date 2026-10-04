@@ -7,6 +7,13 @@ return {
           explorer = {
             ignored = true,
             hidden = true,
+            layout = {
+              layout = {
+                width = 0.25,
+                min_width = 20,
+                max_width = 60,
+              },
+            },
           },
           files = {
             hidden = true,
