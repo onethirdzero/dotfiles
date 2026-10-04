@@ -4,6 +4,10 @@ return {
     opts = {
       picker = {
         sources = {
+          explorer = {
+            ignored = true,
+            hidden = true,
+          },
           files = {
             hidden = true,
           },
