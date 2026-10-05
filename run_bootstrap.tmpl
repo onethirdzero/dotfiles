@@ -476,6 +476,7 @@ fi
 {{- if eq .chezmoi.os "darwin" }}
 # Ensure uv.
 if ! command -v opencode >/dev/null; then
-    brew install opencode
+    # Pin to v1 until v2 support in Neovim plugins become usable.
+    brew install anomalyco/tap/opencode
 {{- end }}
 fi
