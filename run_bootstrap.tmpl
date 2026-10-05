@@ -474,9 +474,8 @@ if [ ! -d "${HOME}/.zgen" ]; then
 fi
 
 {{- if eq .chezmoi.os "darwin" }}
-# Ensure uv.
+# Ensure opencode.
 if ! command -v opencode >/dev/null; then
-    # Pin to v1 until v2 support in Neovim plugins become usable.
-    brew install anomalyco/tap/opencode
+    brew install opencode
 {{- end }}
 fi
