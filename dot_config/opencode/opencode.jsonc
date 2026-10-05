@@ -7,7 +7,6 @@
       "oauth": {}
     }
   },
-  "plugin": ["@mohak34/opencode-notifier@latest"],
   "permission": {
     "external_directory": {
       "~/dev/project-neptune/**": "allow",
