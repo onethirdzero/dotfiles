@@ -1,1 +1,3 @@
 keybind = super+.=esc:.
+
+custom-shader = ~/.config/ghostty/shaders/cursor.glsl
