@@ -46,6 +46,12 @@ plugins=(
 	zsh-history-substring-search
 )
 
+# Force emacs keybindings. Without this, zsh picks up vi mode when $EDITOR="vi", for example,
+# when inherited from tmux. That breaks <cmd + left arrow> and <cmd + right arrow>, which
+# which usually move the cursor to start and end of line. In vi mode, they instead input ^A and ^C into
+# the prompt, because they're not bound to anything.
+bindkey -e
+
 # This behaviour seems to exist out-of-the-box elsewhere, but not on
 # M1 MacBook Pros with Alacritty 0.10.1 and Monterey 12.2.1.
 # https://github.com/zsh-users/zsh-history-substring-search#usage
