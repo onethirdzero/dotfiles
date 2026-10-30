@@ -64,6 +64,10 @@ for _, tt := range tests {
 
 # Coding
 
+## Tests
+
+Even when not coding in Golang, prefer writing table-driven-like tests, where a reader can understand what's expected from the test data, without having to read too much of the test logic.
+
 ## Use Git worktrees
 
 For each feature or change request, use a dedicated Git branch and worktree. Keep the main checkout unchanged.
@@ -88,6 +92,16 @@ Never push a branch to remote without an explicit approval/request from a human.
 
 If a Git push affects a corresponding PR, the PR description should be updated. Remember to use simple language and keep
 it as short and readable as possible.
+
+## Stacked PRs
+
+If a PR is stacked against another PR, or is being stacked against, make sure both PR descriptions call out the merge order. Follow this style:
+
+```
+**Merge order:**
+1. https://... — (this PR) short one-liner of what #1 does.
+2. https://... — short one-liner of what #2 does.
+```
 
 ## Implementation
 
