@@ -66,7 +66,10 @@ for _, tt := range tests {
 
 ## Tests
 
-Even when not coding in Golang, prefer writing table-driven-like tests, where a reader can understand what's expected from the test data, without having to read too much of the test logic.
+- Even when not coding in Golang, prefer writing table-driven-like tests, where a reader can understand what's expected from the test data, without having to read too much of the test logic.
+- For test case names, prefer focusing on describing the real world use cases/how a human would see the effects, instead of calling out internal code interactions
+  - eg. instead of "makes a new alarm with its actions off", prefer "a new gateway's alarm starts with its actions off, so its first false ALARM does not page""
+  - eg. instead of "turns on the actions of an alarm at the limit, then resets it", prefer "a gateway that broke during startup pages after 30 minutes
 
 ## Use Git worktrees
 
