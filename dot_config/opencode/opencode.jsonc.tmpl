@@ -1,15 +1,21 @@
 {{- $workAgents := "" -}}
+{{- $workSkills := "" -}}
 {{- if and .enableWorkDotfiles (ne .extraWorkDotfilesRepoPath "") -}}
 {{-   if hasSuffix ".git" .extraWorkDotfilesRepoPath -}}
 {{-     $workAgents = joinPath .chezmoi.homeDir "dotfiles/.config/opencode/AGENTS.md" -}}
+{{-     $workSkills = joinPath .chezmoi.homeDir "dotfiles/.config/opencode/skills" -}}
 {{-   else -}}
 {{-     $workAgents = joinPath .extraWorkDotfilesRepoPath ".config/opencode/AGENTS.md" -}}
+{{-     $workSkills = joinPath .extraWorkDotfilesRepoPath ".config/opencode/skills" -}}
 {{-   end -}}
 {{- end -}}
 {
   "$schema": "https://opencode.ai/config.json",
 {{- if $workAgents }}
   "instructions": [{{ $workAgents | toJson }}],
+{{- end }}
+{{- if $workSkills }}
+  "skills": [{{ $workSkills | toJson }}],
 {{- end }}
   "mcp": {
     "Jira": {
