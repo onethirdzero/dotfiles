@@ -25,7 +25,7 @@
   "attention": {
     "notifications": true,
     "sound": true,
-    "volume": 0.4
+    "volume": 0.20000000000000004
   },
   "terminal": {
     "copy": "select"
