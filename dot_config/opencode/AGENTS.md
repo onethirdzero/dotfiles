@@ -1,6 +1,6 @@
 # Simple Language
 
-- Use simple language in every chat response, code comment, plan output.
+- Use simple language in every chat response, code comment, PR description, plan output.
 - If a new jargon is used for the first time, define it.
 - Prefer short, direct sentences and common words.
 - Avoid jargon when a plain term is accurate.
@@ -106,6 +106,8 @@ If a PR is stacked against another PR, or is being stacked against, make sure bo
 2. https://... — short one-liner of what #2 does.
 ```
 
+Do not include any details that are internal to an implementation plan - ie. not committed to Git.
+
 ## Implementation
 
 - Always try to split the plan up into chunks that can be Git committed, where every commit builds and passes tests, and
@@ -132,3 +134,18 @@ This helps in identifying potential issues and ensures that the overall architec
 - Always prefer actionable error messages instead of generic ones
   - eg. "input is malformed" is not helpful. "input is missing part X" is actionable.
 
+## Code comments
+
+- In deployment configs (eg. YAML), try not to capture sizing rationale in code comments. Prefer to keep those in PR descriptions.
+  For example, something like "Sized from the prod 7d maximum on 2026-11-04 (36Mi memory, 4m CPU)" is better kept in the
+  PR description, because it's a point-in-time reference.
+
+## Container resources
+
+- Always make memory requests match memory limits.
+- Prefer not to set CPU limits, to avoid CPU throttling.
+
+# Documentation
+
+- Prefer not to include numbers that are based on configuration which may change in the future. Word it in a way that is
+  generic enough, that it doesn't go stale/drift as configuration changes.
