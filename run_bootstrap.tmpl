@@ -482,8 +482,8 @@ fi
 
 {{- if eq .chezmoi.os "darwin" }}
 # Ensure Node Version Manager (nvm).
-if ! command -v nvm >/dev/null; then
-  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
+if [[ ! -d ~/.nvm ]]; then
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | PROFILE=/dev/null bash
 fi
 {{- end }}
 
