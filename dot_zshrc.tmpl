@@ -184,3 +184,16 @@ function y() {
 	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
 	rm -f -- "$tmp"
 }
+{{- $workZshrc := "" -}}
+{{- if and .enableWorkDotfiles (ne .extraWorkDotfilesRepoPath "") -}}
+{{-   if hasSuffix ".git" .extraWorkDotfilesRepoPath -}}
+{{-     $workZshrc = joinPath .chezmoi.homeDir "dotfiles/.zshrc" -}}
+{{-   else -}}
+{{-     $workZshrc = joinPath .extraWorkDotfilesRepoPath ".zshrc" -}}
+{{-   end -}}
+{{- end }}
+{{- if $workZshrc }}
+
+# Work dotfiles. Keep this last, so work settings win.
+[[ -f {{ $workZshrc | quote }} ]] && source {{ $workZshrc | quote }}
+{{- end }}

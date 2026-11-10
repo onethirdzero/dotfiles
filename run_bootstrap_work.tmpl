@@ -15,11 +15,6 @@ else
     WORK_DOTFILES_DEST="{{ .extraWorkDotfilesRepoPath }}"
 fi
 
-if [[ -f $WORK_DOTFILES_DEST/.zshrc ]]; then
-    printf "\n# From work dotfiles.\n" >> ~/.zshrc
-    cat $WORK_DOTFILES_DEST/.zshrc >> ~/.zshrc
-fi
-
 if [[ -f $WORK_DOTFILES_DEST/.gitconfig ]]; then
     printf "\n# From work dotfiles.\n" >> ~/.gitconfig
     cat $WORK_DOTFILES_DEST/.gitconfig >> ~/.gitconfig
