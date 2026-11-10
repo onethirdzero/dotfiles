@@ -368,26 +368,26 @@ if ! command -v iperf3 >/dev/null; then
 {{- end }}
 fi
 
+{{- if eq .chezmoi.os "darwin" }}
 # Ensure iproute2mac on Mac OS.
 if ! command -v ip >/dev/null; then
-{{- if eq .chezmoi.os "darwin" }}
     brew install iproute2mac
-{{- end }}
 fi
+{{- end }}
 
+{{- if eq .chezmoi.os "darwin" }}
 # Ensure Rectangle on Mac OS.
 if ! brew list --cask rectangle &>/dev/null; then
-{{- if eq .chezmoi.os "darwin" }}
     brew install --cask rectangle
-{{- end }}
 fi
+{{- end }}
 
+{{- if eq .chezmoi.os "darwin" }}
 # Ensure KeyCastr on Mac OS.
 if ! brew list --cask keycastr &>/dev/null; then
-{{- if eq .chezmoi.os "darwin" }}
     brew install --cask keycastr
-{{- end }}
 fi
+{{- end }}
 
 {{- if eq .chezmoi.os "darwin" }}
 # Ensure BetterAudio on Mac OS.
@@ -453,19 +453,19 @@ if ! command -v pyenv >/dev/null; then
 {{- end }}
 fi
 
+{{- if eq .chezmoi.os "darwin" }}
 # Ensure yazi.
 if ! command -v yazi >/dev/null; then
-{{- if eq .chezmoi.os "darwin" }}
     brew install yazi
-{{- end }}
 fi
+{{- end }}
 
+{{- if eq .chezmoi.os "darwin" }}
 # Ensure uv.
 if ! command -v uv >/dev/null; then
-{{- if eq .chezmoi.os "darwin" }}
     brew install uv
-{{- end }}
 fi
+{{- end }}
 
 # Ensure zgen.
 if [ ! -d "${HOME}/.zgen" ]; then
