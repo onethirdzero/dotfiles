@@ -477,8 +477,8 @@ fi
 # Ensure opencode.
 if ! command -v opencode >/dev/null; then
     brew install opencode
-{{- end }}
 fi
+{{- end }}
 
 {{- if eq .chezmoi.os "darwin" }}
 # Ensure Node Version Manager (nvm).
