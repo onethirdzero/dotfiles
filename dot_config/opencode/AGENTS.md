@@ -102,7 +102,7 @@ If a PR is stacked against another PR, or is being stacked against, make sure bo
 
 ```
 **Merge order:**
-1. https://... — (this PR) short one-liner of what #1 does.
+1. This PR — short one-liner of what #1 does.
 2. https://... — short one-liner of what #2 does.
 ```
 
