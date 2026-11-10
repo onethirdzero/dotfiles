@@ -75,4 +75,18 @@
 [commit]
   # Add diff to commit comments, for extra clarity.
   verbose = true
+{{- $workGitconfig := "" -}}
+{{- if and .enableWorkDotfiles (ne .extraWorkDotfilesRepoPath "") -}}
+{{-   if hasSuffix ".git" .extraWorkDotfilesRepoPath -}}
+{{-     $workGitconfig = joinPath .chezmoi.homeDir "dotfiles/.gitconfig" -}}
+{{-   else -}}
+{{-     $workGitconfig = joinPath .extraWorkDotfilesRepoPath ".gitconfig" -}}
+{{-   end -}}
+{{- end }}
+{{- if $workGitconfig }}
+
+# Work dotfiles. Keep this last, so work settings win.
+[include]
+  path = {{ $workGitconfig | quote }}
+{{- end }}
 

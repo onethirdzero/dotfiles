@@ -14,11 +14,6 @@ if [[ {{ .extraWorkDotfilesRepoPath }} == *.git ]]; then
 else
     WORK_DOTFILES_DEST="{{ .extraWorkDotfilesRepoPath }}"
 fi
-
-if [[ -f $WORK_DOTFILES_DEST/.gitconfig ]]; then
-    printf "\n# From work dotfiles.\n" >> ~/.gitconfig
-    cat $WORK_DOTFILES_DEST/.gitconfig >> ~/.gitconfig
-fi
 {{- end }}
 
 {{- if (hasKey .chezmoi.osRelease "name") }}
