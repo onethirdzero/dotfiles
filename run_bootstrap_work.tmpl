@@ -72,5 +72,43 @@ if ! command -v helm >/dev/null; then
 {{- end }}
 fi
 
+{{ if eq .chezmoi.os "darwin" }}
+# Ensure Github CLI, for coding agents.
+if ! brew list gh &>/dev/null; then
+    brew install -y gh
+fi
+{{- end }}
+
+{{ if eq .chezmoi.os "darwin" }}
+# Ensure Cursor.
+if ! brew list --cask cursor &>/dev/null; then
+    brew install -y --cask cursor
+	brew install --cask cursor-cli
+fi
+{{- end }}
+
+{{ if eq .chezmoi.os "darwin" }}
+# Ensure OpenAI Codex.
+if ! brew list --cask codex &>/dev/null; then
+    brew install -y --cask codex
+fi
+{{- end }}
+
+{{- if eq .chezmoi.os "darwin" }}
+# Ensure Claude Code.
+if ! brew list --cask claude-code &>/dev/null; then
+    brew install -y --cask claude-code
+fi
+{{- end }}
+
+{{- if eq .chezmoi.os "darwin" }}
+# Ensure roborev.
+if ! brew list roborev  &>/dev/null; then
+	brew trust --formula kenn-io/tap/roborev
+	brew tap kenn-io/tap
+	brew install roborev
+fi
+{{- end }}
+
 # Keep this at EOF.
 {{- end }}
