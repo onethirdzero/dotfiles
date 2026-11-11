@@ -11,3 +11,8 @@ vim.opt.mousescroll = "ver:1,hor:0"
 
 -- Primarily to avoid hiding Markdown syntax, so that navigation isn't so confusing.
 vim.opt.conceallevel = 0
+
+-- Always use the cwd as the root, so root and cwd searches give the same results.
+-- Having to differentiate both is difficult. And I always treat the current
+-- working project/directory as root anyway.
+vim.g.root_spec = { "cwd" }
