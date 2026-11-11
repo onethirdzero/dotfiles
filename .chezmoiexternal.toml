@@ -2,3 +2,10 @@
     type = "git-repo"
     url = "https://github.com/danyuchn/asd-ste100-skill.git"
     refreshPeriod = "168h"
+
+# Manually installed OpenCode integration with tmux-agent-indicator, instead of relying on the tmux-agent indicator installer.
+[".tmux/plugins/tmux-agent-indicator"]
+    type = "git-repo"
+    url = "https://github.com/accessd/tmux-agent-indicator.git"
+    refreshPeriod = "168h"
+
