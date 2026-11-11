@@ -99,13 +99,6 @@ fi
 {{- end }}
 
 {{- if eq .chezmoi.os "darwin" }}
-# Ensure Firefox on Mac OS.
-if ! brew list --cask firefox &>/dev/null; then
-	brew install --cask firefox
-fi
-{{- end }}
-
-{{- if eq .chezmoi.os "darwin" }}
 # Ensure Brave on Mac OS.
 if ! brew list --cask brave-browser &>/dev/null; then
 	brew install --cask brave-browser
