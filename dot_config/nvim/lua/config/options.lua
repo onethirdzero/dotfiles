@@ -16,3 +16,6 @@ vim.opt.conceallevel = 0
 -- Having to differentiate both is difficult. And I always treat the current
 -- working project/directory as root anyway.
 vim.g.root_spec = { "cwd" }
+
+-- Keep deletes and changes (eg. 'ciw') out of the system clipboard. Only yanks go there, see keymaps.lua.
+vim.opt.clipboard = ""
