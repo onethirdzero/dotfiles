@@ -110,5 +110,12 @@ if ! brew list roborev  &>/dev/null; then
 fi
 {{- end }}
 
+{{- if eq .chezmoi.os "darwin" }}
+# Ensure herdr.
+if ! brew list herdr  &>/dev/null; then
+	brew install herdr
+fi
+{{- end }}
+
 # Keep this at EOF.
 {{- end }}

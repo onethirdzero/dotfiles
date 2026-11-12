@@ -4,7 +4,7 @@
     "wrap": "word"
   },
   "session": {
-    "sidebar": "auto",
+    "sidebar": "hide",
     "scrollbar": true,
     "thinking": "hide",
     "permissions": "prompt",
@@ -24,10 +24,11 @@
   },
   "attention": {
     "notifications": true,
-    "sound": true,
+    "sound": false,
     "volume": 0.10000000000000003
   },
   "terminal": {
     "copy": "select"
-  }
+  },
+  "plugins": ["./herdr-opencode"]
 }
