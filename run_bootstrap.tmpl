@@ -443,6 +443,13 @@ fi
 {{- end }}
 
 {{- if eq .chezmoi.os "darwin" }}
+# Ensure ImageMagick, for inline images in Neovim (snacks.image).
+if ! command -v magick >/dev/null; then
+    brew install imagemagick
+fi
+{{- end }}
+
+{{- if eq .chezmoi.os "darwin" }}
 # Ensure uv.
 if ! command -v uv >/dev/null; then
     brew install uv
@@ -469,3 +476,12 @@ if [[ ! -d ~/.nvm ]]; then
 fi
 {{- end }}
 
+{{- if eq .chezmoi.os "darwin" }}
+# Ensure Mermaid CLI (mmdc), for rendering Mermaid diagrams in Neovim.
+# Needs Node, which comes from nvm above.
+export NVM_DIR="${HOME}/.nvm"
+[[ -s "${NVM_DIR}/nvm.sh" ]] && source "${NVM_DIR}/nvm.sh"
+if ! command -v mmdc >/dev/null && command -v npm >/dev/null; then
+    npm install -g @mermaid-js/mermaid-cli
+fi
+{{- end }}
