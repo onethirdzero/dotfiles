@@ -146,6 +146,12 @@ This helps in identifying potential issues and ensures that the overall architec
 - In deployment configs (eg. YAML), try not to capture sizing rationale in code comments. Prefer to keep those in PR descriptions.
   For example, something like "Sized from the prod 7d maximum on 2026-11-04 (36Mi memory, 4m CPU)" is better kept in the
   PR description, because it's a point-in-time reference.
+- If a function docstring/comment references a function parameter, quote the parameter using backticks, so it's more readable.
+  Example:
+  ```go
+  // PostWorkloadReport posts `report` to `ingestURL` of an agent event source.
+  func (c *Client) PostWorkloadReport(ctx context.Context, ingestURL string, report WorkloadReportPayload) error {
+  ```
 
 ## Container resources
 
