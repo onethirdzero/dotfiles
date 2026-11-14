@@ -12,9 +12,11 @@
 Before every Git commit, check the text you added:
 
 1. List the comment lines, error messages and doc lines in the diff. For example, run `git diff --cached` and look at the added lines.
-2. Load the `asd-ste100` skill, even though a code comment is read by a person.
-3. Rewrite each added line that has a vague noun (such as "the ones"), a word with two meanings, one sentence that holds more than one idea, or a skipped step the reader needs.
-4. Put the fixes in the commit that adds the text.
+2. For each comment, write down the question a reader will ask. For example: "Why does this exist?" or "Why does it not filter?" Check that the comment answers that question, and that each step between the cause and the result is stated.
+3. For each reason in a comment (a "because" or "so that"), ask: "If this reason were false, would the behavior change?" If not, it is background and not the reason. Remove it or say what it is.
+4. Load the `asd-ste100` skill, even though a code comment is read by a person.
+5. Rewrite each added line that has a vague noun (such as "the ones"), a word with two meanings, one sentence that holds more than one idea, or a skipped step the reader needs.
+6. Put the fixes in the commit that adds the text.
 
 Example:
 
