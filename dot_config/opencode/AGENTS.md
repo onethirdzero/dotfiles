@@ -9,6 +9,13 @@
 - Prefer a numbered list when describing a sequence of events.
 - Do not use semicolons.
 
+Before every Git commit, check the text you added:
+
+1. List the comment lines, error messages and doc lines in the diff. For example, run `git diff --cached` and look at the added lines.
+2. Load the `asd-ste100` skill, even though a code comment is read by a person.
+3. Rewrite each added line that has a vague noun (such as "the ones"), a word with two meanings, one sentence that holds more than one idea, or a skipped step the reader needs.
+4. Put the fixes in the commit that adds the text.
+
 Example:
 
 ```text
